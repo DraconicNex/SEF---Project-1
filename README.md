@@ -1,2 +1,2 @@
-# SEF---Project-1
+# SEF
 Software Engineering Fundementals
