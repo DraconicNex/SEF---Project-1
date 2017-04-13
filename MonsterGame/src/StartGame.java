@@ -2,7 +2,7 @@ import java.util.*;
 
 
 
-public class Game 
+public class StartGame 
 {
 	private static final Scanner sc = new Scanner(System.in);
 
@@ -10,10 +10,10 @@ public class Game
 
 	public static void main(String[] args)
 	{
-		Game theGame = new Game();
+		StartGame startGame = new StartGame();
 
 	}
-	public Game() {
+	public StartGame() {
 		
 		int boardSize;
 		String directionInput;
