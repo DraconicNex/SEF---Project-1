@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Board 
 {
 	//testing testing 1,2!!
-	//testing 321
+	//bloody dual security 
 	private static ArrayList<Square> gameSquares = new ArrayList<Square>() ;
 	private static ArrayList<Player> gamePlayers = new ArrayList<Player>();
 	private static Square tempSquare;
