@@ -4,7 +4,8 @@ import java.util.Scanner;
 public class Board 
 {
 	//testing testing 1,2,3!!
-	private static  ArrayList<Square> gameSquares = new ArrayList<Square>() ;
+	// mark is awesome
+	private static ArrayList<Square> gameSquares = new ArrayList<Square>() ;
 	private static ArrayList<Player> gamePlayers = new ArrayList<Player>();
 	private static Square tempSquare;
 	private static Player playersTemp,temp;
