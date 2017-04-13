@@ -3,8 +3,7 @@ import java.util.Scanner;
 
 public class Board 
 {
-	//testing testing 1,2,3!!
-	// mark is awesome
+	//testing testing 1,2!!
 	private static ArrayList<Square> gameSquares = new ArrayList<Square>() ;
 	private static ArrayList<Player> gamePlayers = new ArrayList<Player>();
 	private static Square tempSquare;
