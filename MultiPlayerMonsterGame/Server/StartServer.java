@@ -6,9 +6,9 @@ public class StartServer {
 
 	public static void main(String[] args) {
 		   try {
-			   Game Hello = new Game();
+			   Game MonsterGame = new Game();
 			   LocateRegistry.createRegistry(1099);
-			   Naming.rebind("rmi://localhost/ABC", Hello);
+			   Naming.rebind("rmi://localhost/ABC", MonsterGame);
 			   
 			   System.out.println("Addition Server is ready.");
 			   }catch (Exception e) {
