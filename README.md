@@ -1,6 +1,0 @@
-# SEF
-
-Software Engineering Fundementals
-
------
-
