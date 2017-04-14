@@ -66,7 +66,7 @@ public class Console {
 				ServerInterface player;
 				try {
 					player = (ServerInterface)Naming.lookup("rmi://localhost/ABC");
-					int String = player.joinLobby();
+					int playerID = player.joinLobby();
 					lblLobby.setVisible(false);
 					btnJoinLobby.setVisible(false);
 					}catch (Exception arg0) {			
