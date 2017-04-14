@@ -1,6 +1,15 @@
 import java.awt.EventQueue;
+import java.rmi.*;
+
 
 import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Console {
 
@@ -19,7 +28,9 @@ public class Console {
 					e.printStackTrace();
 				}
 			}
+			
 		});
+		
 	}
 
 	/**
@@ -34,8 +45,34 @@ public class Console {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 630, 630);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
+		frame.getContentPane().setLayout(null);
+		
+		JButton btnJoinLobby = new JButton("JOIN LOBBY");
 
+		btnJoinLobby.setFont(new Font("SansSerif", Font.BOLD, 20));
+		btnJoinLobby.setBounds(203, 380, 171, 51);
+		frame.getContentPane().add(btnJoinLobby);
+		
+		JLabel lblLobby = new JLabel("WELCOME TO THE MONSTER GAME");
+		lblLobby.setFont(new Font("Microsoft YaHei", Font.BOLD, 26));
+		lblLobby.setBounds(71, 67, 482, 82);
+		frame.getContentPane().add(lblLobby);	
+		
+		btnJoinLobby.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ServerInterface player;
+				try {
+					player = (ServerInterface)Naming.lookup("rmi://localhost/ABC");
+					lblLobby.setVisible(false);
+					btnJoinLobby.setVisible(false);
+					}catch (Exception arg0) {			
+						JOptionPane.showMessageDialog(null, "Couldn't join Server");
+						}
+				
+			}
+		});
+	}
 }
