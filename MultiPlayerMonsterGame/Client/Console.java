@@ -63,15 +63,21 @@ public class Console {
 		btnJoinLobby.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ServerInterface player;
+				ClientInterface player;
+				int playerID = 10;
+				System.out.println("player numberS: "+ playerID);
 				try {
-					player = (ServerInterface)Naming.lookup("rmi://localhost/ABC");
-					int playerID = player.joinLobby();
+					System.out.println("player number1: "+ playerID);
+					player = (ClientInterface)Naming.lookup("rmi://localhost/ABC");
+					System.out.println("player number2: "+ playerID);
+					playerID = player.joinLobby();
+					
 					lblLobby.setVisible(false);
 					btnJoinLobby.setVisible(false);
 					}catch (Exception arg0) {			
 						JOptionPane.showMessageDialog(null, "Couldn't join Server");
-						}
+					}
+				System.out.println("player numberE: "+ playerID);
 				
 			}
 		});
