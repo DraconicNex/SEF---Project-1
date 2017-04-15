@@ -3,7 +3,8 @@ import java.rmi.server.*;
 import java.util.*;
  
 public class Game extends UnicastRemoteObject implements ClientInterface {
-	 public Game () throws RemoteException {   }
+	 
+	public Game () throws RemoteException {   }
 	 
 	  LinkedList<Integer> Lobby = new LinkedList<Integer>();
 	 
@@ -19,3 +20,4 @@ public class Game extends UnicastRemoteObject implements ClientInterface {
     	  return Lobby.getLast(); 
       }
  }
+

@@ -65,9 +65,9 @@ public class Console {
 			public void mouseClicked(MouseEvent e) {
 				ClientInterface player;
 				int playerID = 10;
-				System.out.println("player numberS: "+ playerID);
+			//	System.out.println("player numberS: "+ playerID);
 				try {
-					System.out.println("player number1: "+ playerID);
+				//	System.out.println("player number1: "+ playerID);
 					player = (ClientInterface)Naming.lookup("rmi://localhost/ABC");
 					System.out.println("player number2: "+ playerID);
 					playerID = player.joinLobby();
@@ -77,7 +77,7 @@ public class Console {
 					}catch (Exception arg0) {			
 						JOptionPane.showMessageDialog(null, "Couldn't join Server");
 					}
-				System.out.println("player numberE: "+ playerID);
+				 System.out.println("player numberE: "+ playerID);
 				
 			}
 		});

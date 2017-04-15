@@ -1,8 +1,5 @@
-import static org.junit.Assert.assertEquals;
-
 import java.rmi.Naming;
-import java.rmi.registry.LocateRegistry;
-import java.util.*;  
+import java.rmi.registry.LocateRegistry;  
 
 public class StartServer {
 
@@ -20,3 +17,4 @@ public class StartServer {
 	}
 
 }
+
