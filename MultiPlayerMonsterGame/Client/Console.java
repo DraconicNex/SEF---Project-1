@@ -64,7 +64,7 @@ public class Console {
 		btnPosition1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				makeVisible();
+				//makeVisible();
 			}
 		});
 		btnPosition1.setVisible(false);
@@ -76,7 +76,7 @@ public class Console {
 		btnPosition2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				makeVisible();
+				//makeVisible();
 			}
 		});
 		btnPosition2.setVisible(false);
@@ -88,7 +88,7 @@ public class Console {
 		btnPosition3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				makeVisible();
+				//makeVisible();
 			}
 		});
 		btnPosition3.setVisible(false);
@@ -100,7 +100,7 @@ public class Console {
 		btnPosition4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				makeVisible();
+				//makeVisible();
 			}
 		});
 		btnPosition4.setVisible(false);
@@ -111,40 +111,36 @@ public class Console {
 		btnJoinLobby.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ClientInterface player;
-				int playerID;
+				ClientInterface player = null;
+				int playerID = 0;
 				
 				try {
-				//	System.out.println("player number1: "+ playerID);
+
 					player = (ClientInterface)Naming.lookup("rmi://localhost/ABC");
-					System.out.println("player number2: "+ playerID);
 					playerID = player.joinLobby();
+					System.out.println("player number: "+ playerID);
 					
 					lblLobby.setVisible(false);
 					btnJoinLobby.setVisible(false);
 					}catch (Exception arg0) {			
 						JOptionPane.showMessageDialog(null, "Couldn't join Server");
 					}
-				// System.out.println("player numberE: "+ playerID);
-				try{
-				      GameCheck GameStatus = new GameCheck("Thread-1", player, playerID);
-				      GameStatus.start();
-				}catch(Exception arg1){
-					
+				 
+				if((playerID != 0)&&(player != null)){
+					GameCheck GameStatus = new GameCheck(player, playerID);
+					GameStatus.start();
+	
+					lblLobby.setText("PLEASE SELECT A START POSITION");
+					lblLobby.setVisible(true);
+					btnPosition1.setVisible(true);
+					btnPosition2.setVisible(true);
+					btnPosition3.setVisible(true);
+					btnPosition4.setVisible(true);
 				}
+
 				
 			}
 		});
-		public final makeVisible() {
-		lblLobby.setText("PLEASE SELECT A START POSITION");
-		
-		lblLobby.setVisible(true);
-		btnPosition1.setVisible(true);
-		btnPosition2.setVisible(true);
-		btnPosition3.setVisible(true);
-		btnPosition4.setVisible(true);
-
-	}
 	}
 
 }

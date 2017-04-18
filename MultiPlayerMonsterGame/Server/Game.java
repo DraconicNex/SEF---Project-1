@@ -10,8 +10,9 @@ public  class Game extends UnicastRemoteObject implements ClientInterface {
 	 
 	  LinkedList<Integer> Lobby = new LinkedList<Integer>();
 	  boolean currentGame = false;
-	 
+	  int playersInGame = 1;
     
+	  
       public int joinLobby() {
     	  
     	   if(Lobby.isEmpty() == true){
@@ -19,22 +20,40 @@ public  class Game extends UnicastRemoteObject implements ClientInterface {
     	  }else{
     		 int lastID = Lobby.getLast();
     		 Lobby.add(lastID + 1);
-    		
     	  }
     	   
-    	   if((Lobby.size() == 2)&&(currentGame != true)){
+    	   if((Lobby.size() >= playersInGame)&&(currentGame != true)){
     		   monsterGame();
+    		   currentGame = true;
     	   }
-    	   System.out.println("player number game: "+ Lobby.getLast());
+    	   
+    	  // System.out.println("playerID issued: "+ Lobby.getLast());
+    	   
     	  return Lobby.getLast(); 
     	  
       }
+      
+      
+      public boolean inGame(int PlayerID) {
+    	  if(currentGame == true){
+	    	  for(int i = 1; i <= playersInGame; i++){
+	    		  if(Lobby.get(i) == PlayerID){
+	    			  return true;
+	    		  } 
+	    	  }  
+    	  }
+    	  return false;
+      }
+      
       
       public  void monsterGame() {
     	  for(int i = 0; i <= 1; i++){
 
     	  }
       }
+      
+      
+      
 
  }
 
