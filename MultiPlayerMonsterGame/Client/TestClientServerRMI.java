@@ -40,6 +40,10 @@ public class TestClientServerRMI {
 		assertEquals(true,gameActive); 
 		
 		
+		//check if player1 in game
+		gameActive = player.inGame(1);
+		System.out.println("Game: " +gameActive);
+		assertEquals(true,gameActive);
 
 	}
 

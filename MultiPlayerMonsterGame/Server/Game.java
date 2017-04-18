@@ -10,7 +10,7 @@ public  class Game extends UnicastRemoteObject implements ClientInterface {
 	 
 	  LinkedList<Integer> Lobby = new LinkedList<Integer>();
 	  boolean currentGame = false;
-	  int playersInGame = 1;
+	  int playersInGame = 2;
     
 	  
       public int joinLobby() {
@@ -36,8 +36,9 @@ public  class Game extends UnicastRemoteObject implements ClientInterface {
       
       public boolean inGame(int PlayerID) {
     	  if(currentGame == true){
-	    	  for(int i = 1; i <= playersInGame; i++){
+	    	  for(int i = 0; i <= playersInGame; i++){
 	    		  if(Lobby.get(i) == PlayerID){
+	    			  System.out.println("id: " + PlayerID);
 	    			  return true;
 	    		  } 
 	    	  }  
