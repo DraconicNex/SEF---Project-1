@@ -124,7 +124,7 @@ public class TestToMoveOject
 	@Test (expected = outOfBoundsException.class)
 	public void test2DArrayTwo() throws outOfBoundsException
 	{
-		// return x and y coord
+		// return x and y coord after move item2
 		
 		assertEquals(XCoord,0);
 		assertEquals(YCoord,0);
