@@ -14,6 +14,8 @@ public class TestToMoveOject
 	Square objectSquare = new Square(1,1,tempPlayer);
 	int boardSize =9;
 	String direction;
+	int XCoord =0;
+	int YCoord =0;
 // hey Robbie push to branch master
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception
@@ -59,7 +61,7 @@ public class TestToMoveOject
 		assertEquals(objectSquare.getY(),2);
 	}
 	
-	@Test (expected = outOfBoundsException.class)
+	@Test 
 	public void testGate() throws outOfBoundsException
 	
 	// Move down to gate -- move through gate
@@ -107,5 +109,27 @@ public class TestToMoveOject
 		assertEquals(objectSquare.getY(),5);
 	}
 
+	@Test 
+	public void test2DArray() throws outOfBoundsException
+	{
+		assertEquals(XCoord,0);
+		assertEquals(YCoord,0);
+		direction = "Down";
+		
+		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize);
+		assertEquals(XCoord,0);
+		assertEquals(YCoord,1);
+	}
+	
+	@Test (expected = outOfBoundsException.class)
+	public void test2DArrayTwo() throws outOfBoundsException
+	{
+		assertEquals(XCoord,0);
+		assertEquals(YCoord,0);
+		direction = "Up";
+		
+		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize);
+		
+	}
 
 }

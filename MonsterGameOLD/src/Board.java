@@ -11,7 +11,7 @@ public class Board
 	                      tempSquareB;
 	private static Player tempPlayer,temp;
 	private static final Scanner sc = new Scanner(System.in);  
-	private static int numberOfPlayers , tempXA , tempYA ,tempXB, tempYB;
+	private static int numberOfPlayers ,tempXA, tempYA ,tempXB, tempYB, playerNumber;
 	private static String  direction;
 	private static Monster gameMonster;
 	private static int boardSize;
@@ -266,5 +266,39 @@ public static void refreshGameBoard2()
 		
 	}	
 		
+/*----------------------------------moveItem 2----------------------------------------*/	
+	
+	
+	public static void moveitem2()
+	{
+		playerNumber = 1;
+		direction ="Right";
+		
+		
+		for (int i = 0; i < gameBoard.length; i++) {
+		    for (int j = 0; j < gameBoard[i].length; j++) {
+		        if (gameBoard[j][i] instanceof Player) 
+		        {
+		        	if (gameBoard[j][i].getItemChar() == Integer.toString(playerNumber));
+		        	 tempXA = j;
+		        	 tempYA =i;
+		        	 MovableItem.moveItem2(j,i,direction,boardSize);
+		        }
+		    }
+		}
+
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 }
