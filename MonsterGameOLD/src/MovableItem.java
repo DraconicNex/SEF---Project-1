@@ -116,10 +116,10 @@ public class MovableItem extends Item {
 	
 	/*-----------------------------Using two dimensional----------------------------------*/
 	
-	public static int moveItem2(int XCoord, int YCoord, String direction
+	public static int[] moveItem2(int XCoord, int YCoord, String direction
 			           , int boardSize) throws outOfBoundsException
     {
-		
+		results = new int[2];
 		
         if (direction == "Up")
         	{
@@ -139,7 +139,9 @@ public class MovableItem extends Item {
    		             YCoord =tempInt;
    		              
    		        	 }
-        	   return YCoord;
+        	   results[0] = XCoord;
+        	   results[1] = YCoord;
+        	   return results;
 	         }
         
         else if (direction =="Down")
@@ -159,7 +161,9 @@ public class MovableItem extends Item {
    		           YCoord = tempInt;
    		           
    		           }
-   	        return YCoord;
+   	        results[0] = XCoord;
+     	    results[1] = YCoord;
+   	        return results;
 	       }
 
         else if (direction =="Left")
@@ -179,8 +183,11 @@ public class MovableItem extends Item {
 		           XCoord =(tempInt); 
 		           
    	           }
-        	   return XCoord;
+        	   results[0] = XCoord;
+        	   results[1] = YCoord;
+        	   return results;
 
+        	   
 	     
     }
 
@@ -202,11 +209,15 @@ public class MovableItem extends Item {
    		XCoord = (tempInt);
    		
    	 }
-   	return XCoord;  
+       results[0] = XCoord;
+	   results[1] = YCoord;
+   	return results;  
 	     
 	  
     }
-		return 0;
+        results[0] = XCoord;
+ 	    results[1] = YCoord;
+		return results;
   	 
   }
 }

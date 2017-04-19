@@ -115,8 +115,8 @@ public class TestToMoveOject
 		assertEquals(XCoord,0);
 		assertEquals(YCoord,0);
 		direction = "Down";
-		
-		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize);
+		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
 		assertEquals(XCoord,0);
 		assertEquals(YCoord,1);
 	}
@@ -128,7 +128,8 @@ public class TestToMoveOject
 		assertEquals(YCoord,0);
 		direction = "Up";
 		
-		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize);
+		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
 		
 	}
 
