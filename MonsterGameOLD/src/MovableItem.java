@@ -118,7 +118,9 @@ public class MovableItem extends Item {
 	
 	public static int[] moveItem2(int XCoord, int YCoord, String direction
 			           , int boardSize) throws outOfBoundsException
-    {
+    {   //Changed now to reurn x and y coords after move.
+		
+		
 		results = new int[2];
 		
         if (direction == "Up")
