@@ -59,7 +59,7 @@ public class TestToMoveOject
 		assertEquals(objectSquare.getY(),2);
 	}
 	
-	@Test 
+	@Test (expected = outOfBoundsException.class)
 	public void testGate() throws outOfBoundsException
 	
 	// Move down to gate -- move through gate
