@@ -42,7 +42,7 @@ public class Board
 				{
 					System.out.print("A");
 					tempItem = new Floor("A");
-		            tempSquare =  new Square(i,j,tempItem);
+		            tempSquare =  new Square(j,i,tempItem);
 					gameSquares.add(tempSquare);
 					
 					
@@ -52,7 +52,7 @@ public class Board
 				{
 					System.out.print("B");
 					tempItem = new Floor("B");
-		            tempSquare =  new Square(i,j,tempItem);
+		            tempSquare =  new Square(j,i,tempItem);
 					gameSquares.add(tempSquare);
 					
 					
@@ -61,7 +61,7 @@ public class Board
 				{
 					System.out.print("C");
 					tempItem = new Floor("C");
-		            tempSquare =  new Square(i,j,tempItem);
+		            tempSquare =  new Square(j,i,tempItem);
 					gameSquares.add(tempSquare);
 					
 					
@@ -70,7 +70,7 @@ public class Board
 				{
 					System.out.print("D");
 					tempItem = new Floor("D");
-		            tempSquare =  new Square(i,j,tempItem);
+		            tempSquare =  new Square(j,i,tempItem);
 					gameSquares.add(tempSquare);
 					
 					
@@ -80,7 +80,7 @@ public class Board
 					System.out.print("M");
 									
 					gameMonster = new Monster("M");
-					tempSquare =  new Square(i,j,gameMonster);
+					tempSquare =  new Square(j,i,gameMonster);
 					gameSquares.add(tempSquare);
 					
 					
@@ -91,7 +91,7 @@ public class Board
 					
 					
 					tempItem = new Floor("-");
-		            tempSquare =  new Square(i,j,tempItem);
+		            tempSquare =  new Square(j,i,tempItem);
 					gameSquares.add(tempSquare);
 					System.out.print("-");
 					
@@ -101,7 +101,7 @@ public class Board
 				else {
 		            System.out.print("*");
 		            tempItem = new Wall("*");
-		            tempSquare =  new Square(i,j,tempItem);
+		            tempSquare =  new Square(j,i,tempItem);
 					gameSquares.add(tempSquare);
 		           
 		            
@@ -194,7 +194,7 @@ public class Board
 	{
 		direction ="Right";
 		tempPlayer = new Player ("A");
-		tempSquare = new Square(5,9,tempPlayer);
+		tempSquare = new Square(9,5,tempPlayer);
 		try {
 			 MovableItem.moveItem(direction,tempSquare,boardSize);
 		} catch (outOfBoundsException messageJ)

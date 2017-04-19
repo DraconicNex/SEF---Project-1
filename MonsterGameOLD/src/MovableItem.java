@@ -25,18 +25,18 @@ public class MovableItem extends Item {
 		{
 	         if (direction == "Up")
 		     {
-	        	 if ((objectSquare.getX() - 1 < 1) && 
-	        	 (objectSquare.getY() != ((boardSize/2) + 1)))
+	        	 if ((objectSquare.getY() - 1 < 1) && 
+	        	 (objectSquare.getX() != ((boardSize/2) + 1)))
 	        	 {
 	        		 throw new outOfBoundsException("Out of Bounds Top");
 	        	 }
-	        	 else if (objectSquare.getY() == ((boardSize/2) + 1))
+	        	 else if (objectSquare.getX() == ((boardSize/2) + 1))
 	        	 {
-	        		 objectSquare.changeXCoord(boardSize);
+	        		 objectSquare.changeYCoord(boardSize);
 	        	 }
 	        	 else
 	        	 {
-	        		 tempInt = objectSquare.getX() - 1;
+	        		 tempInt = objectSquare.getY() - 1;
 				     objectSquare.changeXCoord(tempInt);
 	        	 }
 			     
@@ -45,19 +45,19 @@ public class MovableItem extends Item {
 		     }
 		    else if (direction =="Down")
 		     {
-		    	 if ((objectSquare.getX() + 1 > boardSize) && 
-	        	 (objectSquare.getY() != ((boardSize/2) + 1)))
+		    	 if ((objectSquare.getY() + 1 > boardSize) && 
+	        	 (objectSquare.getX() != ((boardSize/2) + 1)))
 	        	 {
 	        		 throw new outOfBoundsException("Out of Bounds Bottom");
 	        	 }
-		    	 else if (objectSquare.getY() == ((boardSize/2) + 1))
+		    	 else if (objectSquare.getX() == ((boardSize/2) + 1))
 	        	 {
-	        		 objectSquare.changeXCoord(1);
+	        		 objectSquare.changeYCoord(1);
 	        	 }
 	        	 else
 	        	 {
-	        		 tempInt = objectSquare.getX() + 1;
-				     objectSquare.changeXCoord(tempInt);
+	        		 tempInt = objectSquare.getY() + 1;
+				     objectSquare.changeYCoord(tempInt);
 	        	 }
 			      
 			
@@ -69,20 +69,20 @@ public class MovableItem extends Item {
 		
 		     else if (direction =="Left")
 		     {
-		    	 if ((objectSquare.getY() - 1 < 1) && 
-		    			 (objectSquare.getX() != ((boardSize/2) + 1)))
+		    	 if ((objectSquare.getX() - 1 < 1) && 
+		    			 (objectSquare.getY() != ((boardSize/2) + 1)))
 		    			 
 	        	 {
 	        		 throw new outOfBoundsException("Out of Bounds Left");
 	        	 }
-		    	 else if (objectSquare.getX() == ((boardSize/2) + 1))
+		    	 else if (objectSquare.getY() == ((boardSize/2) + 1))
 	        	 {
-	        		 objectSquare.changeYCoord(boardSize);
+	        		 objectSquare.changeXCoord(boardSize);
 	        	 }
 		    	 else
 		    	 {
-				      tempInt = objectSquare.getY() - 1;
-				      objectSquare.changeYCoord(tempInt); 
+				      tempInt = objectSquare.getX() - 1;
+				      objectSquare.changeXCoord(tempInt); 
 		    	 }
 
 			     
@@ -90,19 +90,19 @@ public class MovableItem extends Item {
 		
 		     else if (direction =="Right")
 		     {
-		    	 if ((objectSquare.getY() - 1 > boardSize)&& 
-    			     (objectSquare.getX() != ((boardSize/2) + 1)))
+		    	 if ((objectSquare.getX() - 1 > boardSize)&& 
+    			     (objectSquare.getY() != ((boardSize/2) + 1)))
 	        	 {
 	        		 throw new outOfBoundsException("Out of Bounds Right");
 	        	 }
-		    	 else if (objectSquare.getX() == ((boardSize/2) + 1))
+		    	 else if (objectSquare.getY() == ((boardSize/2) + 1))
 	        	 {
-	        		 objectSquare.changeYCoord(1);
+	        		 objectSquare.changeXCoord(1);
 	        	 }
 		    	 else
 		    	 {
-		    		 tempInt = objectSquare.getY() + 1;
-				     objectSquare.changeYCoord(tempInt);
+		    		 tempInt = objectSquare.getX() + 1;
+				     objectSquare.changeXCoord(tempInt);
 		    	 }
 			     
 			     

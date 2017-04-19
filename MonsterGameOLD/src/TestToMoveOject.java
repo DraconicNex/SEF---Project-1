@@ -55,8 +55,8 @@ public class TestToMoveOject
 		assertEquals(objectSquare.getY(),1);
 		direction = "Down";
 		MovableItem.moveItem(direction, objectSquare, boardSize);
-		assertEquals(objectSquare.getX(),2);
-		assertEquals(objectSquare.getY(),1);
+		assertEquals(objectSquare.getX(),1);
+		assertEquals(objectSquare.getY(),2);
 	}
 
 
