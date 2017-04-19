@@ -58,6 +58,45 @@ public class TestToMoveOject
 		assertEquals(objectSquare.getX(),1);
 		assertEquals(objectSquare.getY(),2);
 	}
+	
+	@Test 
+	public void testGate() throws outOfBoundsException
+	{
+		assertEquals(objectSquare.getX(),1);
+		assertEquals(objectSquare.getY(),1);
+		direction = "Down";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		direction = "Down";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		direction = "Down";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		direction = "Down";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		direction = "Left";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		assertEquals(objectSquare.getX(),5);
+		assertEquals(objectSquare.getY(),9);
+	}
+	
+	
+	@Test 
+	public void testGate2() throws outOfBoundsException
+	{
+		assertEquals(objectSquare.getX(),1);
+		assertEquals(objectSquare.getY(),1);
+		direction = "Right";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		direction = "Right";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		direction = "Right";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		direction = "Right";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		direction = "Left";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		assertEquals(objectSquare.getX(),1);
+		assertEquals(objectSquare.getY(),4);
+	}
 
 
 }
