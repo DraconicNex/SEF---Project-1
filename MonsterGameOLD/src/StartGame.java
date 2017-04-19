@@ -33,6 +33,8 @@ public class StartGame
 		 *  */
 	    
 		Board.initialiseGameBoard();
+		
+		Board.refreshGameBoard2();
 				
 		Board.PlayerNumbers();
 		
@@ -41,6 +43,8 @@ public class StartGame
 		Board.refreshGameBoard();
 		
 		Board.moveitem();
+		
+		Board.refreshGameBoard();
 		
 		
 		

@@ -15,4 +15,6 @@ public class Item{
     {
     	return itemChar;
     }
+    
+    
 }
