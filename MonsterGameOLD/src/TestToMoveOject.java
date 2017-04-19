@@ -14,7 +14,7 @@ public class TestToMoveOject
 	Square objectSquare = new Square(1,1,tempPlayer);
 	int boardSize =9;
 	String direction;
-
+// hey Robbie push to branch master
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception
 	{
