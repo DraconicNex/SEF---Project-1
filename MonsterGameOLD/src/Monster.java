@@ -5,10 +5,11 @@ public class Monster extends MovableItem
 {
 	public boolean canEat;
 
-	public Monster(int xCoord, int yCoord) 
+	public Monster(String itemChar) 
 	{
-		super(xCoord, yCoord);
+		super(itemChar);
 		this.canEat = true;
 	}
 
 }
+

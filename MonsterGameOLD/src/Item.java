@@ -3,22 +3,16 @@ import java.util.*;
 
 public class Item{
 	
-	public int xCoord;
-	public int yCoord;
+	public String itemChar;
 
-	public Item(int xCoord, int yCoord) 
+
+	public Item(String itemChar) 
 	{
-		this.xCoord = xCoord;
-		this.yCoord = yCoord;
-	}
-	public int getX()
-	{
-		return xCoord;
+		this.itemChar = itemChar;
 	}
 	
-	public int getY()
-	{
-		return yCoord;
-	}
-
+    public String getItemChar()
+    {
+    	return itemChar;
+    }
 }

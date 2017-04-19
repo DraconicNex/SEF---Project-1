@@ -5,9 +5,9 @@ public class Square {
 	
 	public int xCoord;
 	public int yCoord;
-	public String squareContent;
+	public Item squareContent;
 
-	public Square(int xCoord, int yCoord, String squareContent) 
+	public Square(int xCoord, int yCoord, Item squareContent) 
 	{
 		
 		this.xCoord = xCoord;
@@ -16,7 +16,7 @@ public class Square {
 			
 		
 	}
-	public int getX()
+	public  int getX()
 	{
 		return xCoord;
 	}
@@ -26,23 +26,27 @@ public class Square {
 		return yCoord;
 	}
 	
-	public String getContents()
+	public Item getContents()
 	{
 		return squareContent;
 	}
 		
-		
-	public static Square changeContent(Square tempSquare, String tempString)
+	public int changeXCoord(int newXCoord)
 	{
-		Square newSquare = new Square(tempSquare.getX(),tempSquare.getY(),tempString);
-		
-		return newSquare;
+		this.xCoord = newXCoord;
+		return xCoord;
 	}
 	
-	public String changeContents(String tempString)
+	public  int changeYCoord(int newYCoord)
+	{
+		this.yCoord = newYCoord;
+		return yCoord;
+	}
+	
+	public  Item changeContents(Item tempContent)
 	
 	{
-		this.squareContent = tempString;
+		this.squareContent = tempContent;
 		return squareContent;
 	}
 

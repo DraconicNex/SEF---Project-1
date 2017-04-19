@@ -2,36 +2,116 @@ import java.util.*;
 
 
 
+
+
 public class MovableItem extends Item {
 	
 	public boolean canMove;
+	public static int tempInt;
 
-	public MovableItem(int xCoord, int yCoord) 
+	public MovableItem(String itemChar) 
 	{
-		super(xCoord, yCoord);
+		super(itemChar);
 		this.canMove = true;
 	}
 	
-	public int moveItem(String direction)
+	public static void moveItem(String direction , Square objectSquare 
+			         , int boardSize) throws outOfBoundsException
+	
 	{
-		if (direction == "Up")
-		{
-			this.xCoord = super.getX() - 1;		
-		}
-		else if (direction =="Down")
-		{
-			this.xCoord = super.getX() + 1;	
-		}
-		else if (direction =="Left")
-		{
-			this.yCoord = super.getY() - 1;	
-		}
-		else if (direction =="Right")
-		{
-			this.yCoord = super.getY() + 1;	
-		}
 		
-		return super.xCoord;
-	}
+		
+		
+		{
+	         if (direction == "Up")
+		     {
+	        	 if ((objectSquare.getX() - 1 < 1) && 
+	        	 (objectSquare.getY() != ((boardSize/2) + 1)))
+	        	 {
+	        		 throw new outOfBoundsException("Out of Bounds Top");
+	        	 }
+	        	 else if (objectSquare.getY() == ((boardSize/2) + 1))
+	        	 {
+	        		 objectSquare.changeXCoord(boardSize);
+	        	 }
+	        	 else
+	        	 {
+	        		 tempInt = objectSquare.getX() - 1;
+				     objectSquare.changeXCoord(tempInt);
+	        	 }
+			     
+			     
+			
+		     }
+		    else if (direction =="Down")
+		     {
+		    	 if ((objectSquare.getX() + 1 > boardSize) && 
+	        	 (objectSquare.getY() != ((boardSize/2) + 1)))
+	        	 {
+	        		 throw new outOfBoundsException("Out of Bounds Bottom");
+	        	 }
+		    	 else if (objectSquare.getY() == ((boardSize/2) + 1))
+	        	 {
+	        		 objectSquare.changeXCoord(1);
+	        	 }
+	        	 else
+	        	 {
+	        		 tempInt = objectSquare.getX() + 1;
+				     objectSquare.changeXCoord(tempInt);
+	        	 }
+			      
+			
+		     }
+		
+		
+		
+		
+		
+		     else if (direction =="Left")
+		     {
+		    	 if ((objectSquare.getY() - 1 < 1) && 
+		    			 (objectSquare.getX() != ((boardSize/2) + 1)))
+		    			 
+	        	 {
+	        		 throw new outOfBoundsException("Out of Bounds Left");
+	        	 }
+		    	 else if (objectSquare.getX() == ((boardSize/2) + 1))
+	        	 {
+	        		 objectSquare.changeYCoord(boardSize);
+	        	 }
+		    	 else
+		    	 {
+				      tempInt = objectSquare.getY() - 1;
+				      objectSquare.changeYCoord(tempInt); 
+		    	 }
 
+			     
+		     }
+		
+		     else if (direction =="Right")
+		     {
+		    	 if ((objectSquare.getY() - 1 > boardSize)&& 
+    			     (objectSquare.getX() != ((boardSize/2) + 1)))
+	        	 {
+	        		 throw new outOfBoundsException("Out of Bounds Right");
+	        	 }
+		    	 else if (objectSquare.getX() == ((boardSize/2) + 1))
+	        	 {
+	        		 objectSquare.changeYCoord(1);
+	        	 }
+		    	 else
+		    	 {
+		    		 tempInt = objectSquare.getY() + 1;
+				     objectSquare.changeYCoord(tempInt);
+		    	 }
+			     
+			     
+		     }
+	
+		   	 
+		}
+	}
+	
+	        
+	
 }

@@ -7,16 +7,19 @@ public class Board
 	//bloody dual security 
 	private static ArrayList<Square> gameSquares = new ArrayList<Square>() ;
 	private static ArrayList<Player> gamePlayers = new ArrayList<Player>();
-	private static Square tempSquare;
-	private static Player playersTemp,temp;
+	private static Square tempSquare,updatedTempSquare;
+	private static Player tempPlayer,temp;
 	private static final Scanner sc = new Scanner(System.in);
 	private static int numberOfPlayers , tempXA , tempYA ,tempXB,tempYB;
-	private static String tempContentA , tempContentB , tempContentC,direction;
-	private static Monster gameMonster = new Monster(0,0);
+	private static String tempContentA , tempContentB , tempContentC, direction;
+	private static Monster gameMonster;
+	private static int boardSize;
+	private static Item tempItem;
 	
 
 	public Board() 
 	{
+		
 		
 		
 	}
@@ -24,10 +27,10 @@ public class Board
 /*------------------Initialise Game Board and Add Monster----------------------------*/
 
 	
-	public static void initialiseGameBoard( int boardSize)
+	public static void initialiseGameBoard()
 	{
 		
-		
+		boardSize = 9;
 		
 		for ( int i=1; i <= boardSize ; i++) {
 			for (int j = 1; j <= boardSize ; j++)
@@ -38,7 +41,8 @@ public class Board
 				if (i==1 & j==1)
 				{
 					System.out.print("A");
-					tempSquare =  new Square(i,j,"A");
+					tempItem = new Floor("A");
+		            tempSquare =  new Square(i,j,tempItem);
 					gameSquares.add(tempSquare);
 					
 					
@@ -47,7 +51,8 @@ public class Board
 				else if (i==1 & j==boardSize)
 				{
 					System.out.print("B");
-					tempSquare =  new Square(i,j,"B");
+					tempItem = new Floor("B");
+		            tempSquare =  new Square(i,j,tempItem);
 					gameSquares.add(tempSquare);
 					
 					
@@ -55,7 +60,8 @@ public class Board
 				else if (i==boardSize & j==1)
 				{
 					System.out.print("C");
-					tempSquare =  new Square(i,j,"C");
+					tempItem = new Floor("C");
+		            tempSquare =  new Square(i,j,tempItem);
 					gameSquares.add(tempSquare);
 					
 					
@@ -63,7 +69,8 @@ public class Board
 				else if (i==boardSize & j==boardSize)
 				{
 					System.out.print("D");
-					tempSquare =  new Square(i,j,"D");
+					tempItem = new Floor("D");
+		            tempSquare =  new Square(i,j,tempItem);
 					gameSquares.add(tempSquare);
 					
 					
@@ -71,9 +78,10 @@ public class Board
 				else if ((i==(boardSize/2)+1) & j==(boardSize/2)+1)
 				{
 					System.out.print("M");
-					tempSquare =  new Square(i,j,"M");
+									
+					gameMonster = new Monster("M");
+					tempSquare =  new Square(i,j,gameMonster);
 					gameSquares.add(tempSquare);
-					gameMonster = new Monster(i,j);
 					
 					
 					
@@ -81,16 +89,19 @@ public class Board
 				else if ((i==1 || j==1) || (i== boardSize || j == boardSize)
 						|| (i==((boardSize/2)+1) || j==((boardSize/2)+1))){
 					
-					System.out.print("-");
-					tempSquare =  new Square(i,j,"-");
+					
+					tempItem = new Floor("-");
+		            tempSquare =  new Square(i,j,tempItem);
 					gameSquares.add(tempSquare);
+					System.out.print("-");
 					
 					
 					
 				}
 				else {
 		            System.out.print("*");
-		            tempSquare =  new Square(i,j,"*");
+		            tempItem = new Wall("*");
+		            tempSquare =  new Square(i,j,tempItem);
 					gameSquares.add(tempSquare);
 		           
 		            
@@ -106,96 +117,20 @@ public class Board
 		System.out.println();
 	}
 	
-/*--------------------------Player Starting Positons--------------------------------*/	
+/*--------------------------Player Starting Positions--------------------------------*/	
 	
-	public static void addInitialPlayerPosition(int boardSize)
+	
+	
+	public static void chooseStartPostion()
 	{
-		
-		String response;
-	    char selection = '\0';
-	    
-	 // Asks player one to select a start position
-		
-		System.out.println("Please Enter postion to Start");
-		
-		System.out.println("A   -   Top Left");
-        System.out.println("B   -   Top Right");
-        System.out.println("C   -   Bottom Left");
-        System.out.println("D   -   Bottom Right");
-        
-		response = sc.next().toUpperCase();
-		System.out.println();
-		
-		if (response.length() != 1)
-        {
-           System.out
-                 .println("Error - you did not enter a valid menu option!");
-        }
-		else
-        {
-           selection = response.charAt(0);
-
-           /* 
-            * process the user's selection by adding initial start position into
-            * the array list.
-            */
-           switch (selection)
-           {
-           case 'A':
-        	   
-        	   playersTemp =  new Player(1,1);
-        	   gamePlayers.add(playersTemp);
-        	   tempSquare = gameSquares.get((1*1)-1);
-			   System.out.println(tempSquare.getContents());
-			   tempSquare = Square.changeContent(tempSquare , Integer.toString(gamePlayers.size() ) );
-			   System.out.println(tempSquare.getContents());
-			   gameSquares.set(((1*1)-1),tempSquare);
-        	   
-        	   break;
-        	   
-           case 'B':
-        	   
-        	   playersTemp=  new Player(1,boardSize);
-        	   gamePlayers.add(playersTemp);
-        	   tempSquare = gameSquares.get((1*boardSize)-1);
-			   System.out.println(tempSquare.getContents());
-			   tempSquare = Square.changeContent(tempSquare ,Integer.toString(gamePlayers.size()) );
-			   System.out.println(tempSquare.getContents());
-			   gameSquares.set(((1*boardSize)-1),tempSquare);
-        	   
-        	   break;
-        	   
-           case 'C':
-        	   
-        	   playersTemp =  new Player(boardSize,1);
-        	   gamePlayers.add(playersTemp);
-        	   tempSquare = gameSquares.get((boardSize - 1) * boardSize);
-			   System.out.println(tempSquare.getContents());
-			   tempSquare = Square.changeContent(tempSquare , Integer.toString(gamePlayers.size()) );
-			   System.out.println(tempSquare.getContents());
-			   gameSquares.set(((boardSize - 1) * boardSize),tempSquare);
-        	   break;
-          
-           case 'D':
-        	   
-        	   playersTemp =  new Player(boardSize,boardSize);
-        	   gamePlayers.add(playersTemp);
-        	   tempSquare = gameSquares.get((boardSize  * boardSize)-1);
-			   System.out.println(tempSquare.getContents());
-			   tempSquare = Square.changeContent(tempSquare ,Integer.toString(gamePlayers.size()) );
-			   System.out.println(tempSquare.getContents());
-			   gameSquares.set(((boardSize  * boardSize)-1),tempSquare);
-        	   
-        	   break;
-           }
-        }
-
-		System.out.println(gameSquares.size() + " assigned");
+		Player.addInitialPlayerPosition(boardSize,gameSquares,gamePlayers);
 	}
+	
+	
 	
 /*--------------------------- Refresh Display of Game Board--------------------------*/
 	
-	public static void refreshGameBoard( int boardSize)
+	public static void refreshGameBoard()
 	
 	{
 		System.out.println(gameSquares.size() + " refreshed");
@@ -208,7 +143,7 @@ public class Board
 			{
 				
 				tempSquare= gameSquares.get((a*boardSize)-(boardSize-b)-1);
-				System.out.print(tempSquare.getContents());
+				System.out.print(tempSquare.getContents().getItemChar());
 				
 			}
 			System.out.println();
@@ -220,15 +155,27 @@ public class Board
 		return gamePlayers.size();
 	}
 	
-	public static int PlayerNumbers()
+	
+/*-------------------------------Choose Numbers of Opponents--------------------*/	
+	
+	public static void PlayerNumbers()
 	{
 		System.out.println(gamePlayers.isEmpty());
 		System.out.println("Enter the number of players you want.");
 		System.out.println("That is 2 to 4. Including You.");
 		numberOfPlayers = sc.nextInt();
 		System.out.println();	
-		return numberOfPlayers;
+		for (int num = 0; num < numberOfPlayers; num++ )
+		{
+			tempPlayer = new Player(Integer.toString(num+1));
+			gamePlayers.add(num, tempPlayer);
+			System.out.println("Size in playerNumbers " + gamePlayers.size() );
+			System.out.println();
+		}
+		
 	}
+	
+	
 	
 	public static Monster gameMonster()
 	{
@@ -241,44 +188,21 @@ public class Board
 		return gameSquares;
 	}
 	
-	public static void moveMonster(int boardSize, String directionInput)
+/*--------------------------Move Item ----------------------------------------*/
+	
+	public static void moveitem()
 	{
-	    direction = directionInput;
-		tempXA = gameMonster.getX();
-		tempYA = gameMonster.getY();
-		tempContentA = (gameSquares.get((tempXA*boardSize)-(boardSize-tempYA)-1)).getContents();
-		System.out.println(tempContentA);
-		
-		gameMonster().moveItem(direction);
-		
-		tempXB = gameMonster.getX();
-		tempYB = gameMonster.getY();
-		tempContentB = (gameSquares.get((tempXB*boardSize)-(boardSize-tempYB)-1)).getContents();
-		System.out.println(tempContentB);
-		
-		tempContentC = tempContentA;
-		
-		
-		tempContentA = (gameSquares.get((tempXA*boardSize)-(boardSize-tempYA)-1)).
-				           changeContents(tempContentB);
-		
-		
-		tempContentB = (gameSquares.get((tempXB*boardSize)-(boardSize-tempYB)-1)).
-				          changeContents(tempContentC);
+		direction ="Right";
+		tempPlayer = new Player ("A");
+		tempSquare = new Square(5,9,tempPlayer);
+		try {
+			 MovableItem.moveItem(direction,tempSquare,boardSize);
+		} catch (outOfBoundsException messageJ)
+         {
+            System.out.println(messageJ.getMessage());
+         }
+		System.out.println("new move item " + tempSquare.getX()
+		       +" "+ tempSquare.getY());
 	}
-	
-	public static void movePlayer(int boardSize, int playerNum)
-	
-	{
-		playersTemp =  gamePlayers.get((playerNum -1));
-		String direction = "Up";
-		playersTemp.moveItem(direction);
-		System.out.println(playersTemp.getX());
-		//String direction = "Up";
-		//playersTemp().moveItem(direction);
-		
-	}
-	
-	
 	
 }
