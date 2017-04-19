@@ -61,6 +61,10 @@ public class TestToMoveOject
 	
 	@Test 
 	public void testGate() throws outOfBoundsException
+	
+	// Move down to gate -- move through gate
+	
+	
 	{
 		assertEquals(objectSquare.getX(),1);
 		assertEquals(objectSquare.getY(),1);
@@ -81,6 +85,9 @@ public class TestToMoveOject
 	
 	@Test 
 	public void testGate2() throws outOfBoundsException
+	
+	// Move down to gate -- move through gate and back again
+	
 	{
 		assertEquals(objectSquare.getX(),1);
 		assertEquals(objectSquare.getY(),1);
