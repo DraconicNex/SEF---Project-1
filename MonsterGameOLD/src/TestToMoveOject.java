@@ -74,8 +74,8 @@ public class TestToMoveOject
 		MovableItem.moveItem(direction, objectSquare, boardSize);
 		direction = "Left";
 		MovableItem.moveItem(direction, objectSquare, boardSize);
-		assertEquals(objectSquare.getX(),5);
-		assertEquals(objectSquare.getY(),9);
+		assertEquals(objectSquare.getX(),9);
+		assertEquals(objectSquare.getY(),5);
 	}
 	
 	
@@ -84,18 +84,18 @@ public class TestToMoveOject
 	{
 		assertEquals(objectSquare.getX(),1);
 		assertEquals(objectSquare.getY(),1);
-		direction = "Right";
-		MovableItem.moveItem(direction, objectSquare, boardSize);
-		direction = "Right";
-		MovableItem.moveItem(direction, objectSquare, boardSize);
-		direction = "Right";
-		MovableItem.moveItem(direction, objectSquare, boardSize);
-		direction = "Right";
+		direction = "Left";
 		MovableItem.moveItem(direction, objectSquare, boardSize);
 		direction = "Left";
 		MovableItem.moveItem(direction, objectSquare, boardSize);
-		assertEquals(objectSquare.getX(),1);
-		assertEquals(objectSquare.getY(),4);
+		direction = "Left";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		direction = "Left";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		direction = "Right";
+		MovableItem.moveItem(direction, objectSquare, boardSize);
+		assertEquals(objectSquare.getX(),7);
+		assertEquals(objectSquare.getY(),1);
 	}
 
 
