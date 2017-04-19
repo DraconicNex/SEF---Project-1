@@ -112,6 +112,9 @@ public class TestToMoveOject
 	@Test 
 	public void test2DArray() throws outOfBoundsException
 	{
+		// Using 2D Array that returns X
+		
+		
 		assertEquals(XCoord,0);
 		assertEquals(YCoord,0);
 		direction = "Down";
@@ -124,7 +127,7 @@ public class TestToMoveOject
 	@Test (expected = outOfBoundsException.class)
 	public void test2DArrayTwo() throws outOfBoundsException
 	{
-		// return x and y coord after move item2
+		// Out of Bounds Exception
 		
 		assertEquals(XCoord,0);
 		assertEquals(YCoord,0);
@@ -133,6 +136,32 @@ public class TestToMoveOject
 		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
 		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
 		
+	}
+	@Test 
+	public void test2DArrayThree() throws outOfBoundsException
+	{
+		
+		// Through the gate
+		
+		
+		assertEquals(XCoord,0);
+		assertEquals(YCoord,0);
+		direction = "Down";
+		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
+		assertEquals(XCoord,0);
+		assertEquals(YCoord,1);
+		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
+		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
+		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
+		direction ="Left";
+		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
+		assertEquals(XCoord,9);
+		assertEquals(YCoord,4);
 	}
 
 }
