@@ -274,6 +274,7 @@ public static void refreshGameBoard2()
 	public static void moveItem2(int playerNumber,String direction)
 	{
 		
+		// test to find object need to pass in the object type monster player
 		
 			for (int i = 0; i < gameBoard.length; i++)
 			{
@@ -292,7 +293,10 @@ public static void refreshGameBoard2()
 		        }
 		      }
 			}
-			System .out.println(tempXA +" " +tempYA +" outside loop");  	
+			System .out.println(tempXA +" " +tempYA +" outside loop");  
+			
+			// once found find where to move and interrogate new square for outcome
+			
 			try
 			{  	 
 		       if (((gameBoard[tempXA][tempYA].getItemChar()).equals (Integer.toString(playerNumber))))
