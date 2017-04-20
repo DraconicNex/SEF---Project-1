@@ -11,7 +11,9 @@ public class Board
 	                      tempSquareB;
 	private static Player tempPlayer,temp;
 	private static final Scanner sc = new Scanner(System.in);  
-	private static int numberOfPlayers ,tempXA, tempYA ,tempXB, tempYB, playerNumber;
+	private static int numberOfPlayers ,tempXA, tempYA ,tempXB, 
+	                      tempYB, playerNumber,
+	                      newXCoord, newYCoord;
 	private static String  direction;
 	private static Monster gameMonster;
 	private static int boardSize;
@@ -90,7 +92,7 @@ public class Board
 					gameMonster = new Monster("M");
 					tempSquare =  new Square(j,i,gameMonster);
 					gameSquares.add(tempSquare);
-					gameBoard[j-1][i-1] = tempItem;
+					gameBoard[j-1][i-1] = gameMonster;
 					
 					
 					
@@ -134,7 +136,7 @@ public class Board
 	
 	public static void chooseStartPostion()
 	{
-		Player.addInitialPlayerPosition(boardSize,gameSquares,gamePlayers);
+		Player.addInitialPlayerPosition(boardSize,gameSquares,gamePlayers,gameBoard);
 	}
 	
 	
@@ -266,28 +268,69 @@ public static void refreshGameBoard2()
 		
 	}	
 		
-/*----------------------------------moveItem 2----------------------------------------*/	
+/*----------------------------------moveItem 2D Array----------------------------------------*/	
 	
 	
-	public static void moveitem2()
+	public static void moveItem2(int playerNumber,String direction)
 	{
-		playerNumber = 1;
-		direction ="Right";
 		
-		
-		for (int i = 0; i < gameBoard.length; i++) {
-		    for (int j = 0; j < gameBoard[i].length; j++) {
+		try
+		{
+			for (int i = 0; i < gameBoard.length; i++) {
+		      for (int j = 0; j < gameBoard[i].length; j++) {
 		        if (gameBoard[j][i] instanceof Player) 
 		        {
 		        	if (gameBoard[j][i].getItemChar() == Integer.toString(playerNumber));
 		        	 tempXA = j;
 		        	 tempYA =i;
-		        	 MovableItem.moveItem2(j,i,direction,boardSize);
+		        	 newXCoord = MovableItem.moveItem2(j,i,direction,boardSize)[0];
+		        	 newYCoord = MovableItem.moveItem2(j,i,direction,boardSize)[1];
+		        	 
+		        	 if (gameBoard[newXCoord][newYCoord] instanceof Wall)
+		        	 {
+		        		 refreshGameBoard2();
+		        		 System.out.println("You have run aground");
+		        		 
+		        		 break;
+		        	 }
+		        	 else if (gameBoard[newXCoord][newYCoord] instanceof Player)
+		        	 {
+		        		 refreshGameBoard2();
+		        		 System.out.println("Danger Will Robinson! Collision ");
+		        		
+		        		 break;
+		        	 }
+		        	 
+		        	 else if (gameBoard[newXCoord][newYCoord] instanceof Monster)
+		        	 {
+		        		 refreshGameBoard2();
+		        		 System.out.println("Danger Will Robinson! We are sunk. ");
+		        		 gamePlayers.remove(playerNumber);
+		        		 
+		        		 break;
+		        	 }
+		        	 
+		        	 else
+		        	 {
+		        		 tempItemA = gameBoard[tempXA][tempYA];
+		        		 tempItemB= gameBoard[newXCoord][newYCoord];
+		        		 tempItemC = tempItemB;
+		        		 gameBoard[newXCoord][newYCoord] = tempItemA;
+		        		 gameBoard[tempXA][tempYA] = tempItemC;
+		        		 refreshGameBoard2();
+		        		 break;
+		        		 
+		        	 }
+		        		 
+	        		 	 
 		        }
 		    }
 		}
 
-		
+		}  catch (outOfBoundsException messageJ)
+         {
+            System.out.println(messageJ.getMessage());
+         }
 		
 		
 		

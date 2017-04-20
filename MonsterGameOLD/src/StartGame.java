@@ -40,11 +40,14 @@ public class StartGame
 		
 		Board.chooseStartPostion();
 		
-		Board.refreshGameBoard();
+		//Board.refreshGameBoard();
 		
-		Board.moveitem();
+		//Board.moveitem();
 		
-		Board.refreshGameBoard();
+		//Board.moveItem2();
+		
+		//Board.refreshGameBoard();
+		Board.refreshGameBoard2();
 		
 		
 		

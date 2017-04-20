@@ -39,7 +39,7 @@ public class Player extends MovableItem
 	}
 	
 	public static void addInitialPlayerPosition(int boardSize, ArrayList<Square> gameSquares,
-			                   ArrayList<Player> gamePlayers)
+			                   ArrayList<Player> gamePlayers, Item[][] gameBoard)
 	{
 		
 		String response;
@@ -88,6 +88,7 @@ public class Player extends MovableItem
 			      playersTemp =  new Player(Integer.toString(playerNumber));
 			      tempSquare.changeContents(playersTemp);
 			      gameSquares.set(((1*1)-1),tempSquare);
+			      gameBoard[0][0] = playersTemp;
 			   
 			  
         	   
@@ -101,6 +102,7 @@ public class Player extends MovableItem
 			   playersTemp =  new Player(Integer.toString(playerNumber));
 			   tempSquare.changeContents(playersTemp);
 			   gameSquares.set(((1*boardSize)-1),tempSquare);
+			   gameBoard[boardSize-1][0] = playersTemp;
         	   
         	   break;
         	   
@@ -112,6 +114,7 @@ public class Player extends MovableItem
 			   playersTemp =  new Player(Integer.toString(playerNumber));
 			   tempSquare.changeContents(playersTemp);
 			   gameSquares.set(((boardSize - 1) * boardSize),tempSquare);
+			   gameBoard[0][boardSize-1] = playersTemp;
         	   break;
           
            case 'D':
@@ -122,6 +125,8 @@ public class Player extends MovableItem
 			   playersTemp =  new Player(Integer.toString(playerNumber));
 			   tempSquare.changeContents(playersTemp);
 			   gameSquares.set(((boardSize  * boardSize)-1),tempSquare);
+			   gameBoard[boardSize-1][boardSize-1] = playersTemp;
+			   
         	   
         	   break;
            }
