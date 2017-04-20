@@ -46,6 +46,10 @@ public class StartGame
 		//Board.moveitem();
 		
 		Board.moveItem2(1,"Down");
+		Board.moveItem2(2,"Left");
+		Board.moveItem2(3,"Up");
+		Board.moveItem2(4,"Left");
+		
 		
 		//Board.refreshGameBoard();
 		Board.refreshGameBoard2();

@@ -291,8 +291,16 @@ public static void refreshGameBoard2()
 		        	tempYA =i;
 		        	System .out.println(tempXA +" " +tempYA+" inside loop");
 		        }
+		        
+		        
 		      }
+		      
 			}
+			
+
+        	System.out.println("Player " + Integer.toString(playerNumber)+" You Are already Sunk");
+        	
+        
 			System .out.println(tempXA +" " +tempYA +" outside loop");  
 			
 			// once found find where to move and interrogate new square for outcome
