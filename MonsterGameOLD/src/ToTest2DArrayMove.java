@@ -76,6 +76,7 @@ public class ToTest2DArrayMove
 		// move out of bonds no move
         Board.moveItem2(1,"Up"); 		
  		System.out.println("After Move Test 4");
+ 		//gameBoard[0][9] = new Monster("M");
 		
 	}
 	
