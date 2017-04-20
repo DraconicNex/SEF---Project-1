@@ -274,65 +274,85 @@ public static void refreshGameBoard2()
 	public static void moveItem2(int playerNumber,String direction)
 	{
 		
-		try
-		{
-			for (int i = 0; i < gameBoard.length; i++) {
-		      for (int j = 0; j < gameBoard[i].length; j++) {
-		        if (gameBoard[j][i] instanceof Player) 
+		
+			for (int i = 0; i < gameBoard.length; i++)
+			{
+				
+		      for (int j = 0; j < gameBoard[i].length; j++) 
+		      {
+		        if ((gameBoard[j][i] instanceof Player) &&
+		        ((gameBoard[j][i].getItemChar()).equals(Integer.toString(playerNumber))))
+		        	
 		        {
-		        	if (gameBoard[j][i].getItemChar() == Integer.toString(playerNumber));
-		        	 tempXA = j;
-		        	 tempYA =i;
-		        	 newXCoord = MovableItem.moveItem2(j,i,direction,boardSize)[0];
-		        	 newYCoord = MovableItem.moveItem2(j,i,direction,boardSize)[1];
-		        	 
-		        	 if (gameBoard[newXCoord][newYCoord] instanceof Wall)
-		        	 {
-		        		 refreshGameBoard2();
-		        		 System.out.println("You have run aground");
-		        		 
-		        		 break;
-		        	 }
-		        	 else if (gameBoard[newXCoord][newYCoord] instanceof Player)
-		        	 {
-		        		 refreshGameBoard2();
-		        		 System.out.println("Danger Will Robinson! Collision ");
-		        		
-		        		 break;
-		        	 }
-		        	 
-		        	 else if (gameBoard[newXCoord][newYCoord] instanceof Monster)
-		        	 {
-		        		 refreshGameBoard2();
-		        		 System.out.println("Danger Will Robinson! We are sunk. ");
-		        		 gamePlayers.remove(playerNumber);
-		        		 
-		        		 break;
-		        	 }
-		        	 
-		        	 else
-		        	 {
-		        		 tempItemA = gameBoard[tempXA][tempYA];
-		        		 tempItemB= gameBoard[newXCoord][newYCoord];
-		        		 tempItemC = tempItemB;
-		        		 gameBoard[newXCoord][newYCoord] = tempItemA;
-		        		 gameBoard[tempXA][tempYA] = tempItemC;
-		        		 refreshGameBoard2();
-		        		 break;
-		        		 
-		        	 }
-		        		 
-	        		 	 
+		        	System.out.println(gameBoard[j][i].getItemChar());
+		        	System.out.println(Integer.toString(playerNumber));
+		        	tempXA = j;
+		        	tempYA =i;
+		        	System .out.println(tempXA +" " +tempYA+" inside loop");
 		        }
-		    }
-		}
+		      }
+			}
+			System .out.println(tempXA +" " +tempYA +" outside loop");  	
+			try
+			{  	 
+		       if (((gameBoard[tempXA][tempYA].getItemChar()).equals (Integer.toString(playerNumber))))
+		        	   {
+		    	         System .out.println(tempXA +" " +tempYA +" nested loop");
+		        	    newXCoord = MovableItem.moveItem2(tempXA,tempYA,direction,boardSize)[0];
+		        	    newYCoord = MovableItem.moveItem2(tempXA,tempYA,direction,boardSize)[1];
+		        	 
+		        	     System .out.println(tempXA +" " +tempYA+" " + newXCoord+" " +newYCoord);
+		        	 
+		        	       if (gameBoard[newXCoord][newYCoord] instanceof Wall)
+		        	           {
+		        		            refreshGameBoard2();
+		        		            System.out.println("You have run aground");
+		        		            
+		        	           }
+		        	      
+		        	       else if (gameBoard[newXCoord][newYCoord] instanceof Player)
+		        	    	   {
+		        		           refreshGameBoard2();
+		        		           System.out.println("Danger Will Robinson! Collision ");
+		        		          
+		        	    	   }       		      
+		        	       		        	 
+		        	       else if (gameBoard[newXCoord][newYCoord] instanceof Monster)
+		        	           {
+		        	  	            refreshGameBoard2();
+		        		            System.out.println("Danger Will Robinson! We are sunk. ");
+		        		            gamePlayers.remove(playerNumber);
+		        		           
+		        	           }
+		        	 
+		        	       else
+		        	           {
+		        	    	        tempItemA = gameBoard[tempXA][tempYA];
+		        		            tempItemB= gameBoard[newXCoord][newYCoord];
+		        		            tempItemC = tempItemB;
+		        		            gameBoard[newXCoord][newYCoord] = tempItemA;
+		        		            gameBoard[tempXA][tempYA] = tempItemC;
+		        		            refreshGameBoard2();	 
+		        		            
+		        	           }
+		        	      
+		        	            
+		        		      
+		        	   }
+		      
+		       
+		    
+	  	 
+		    
+	    
+		
 
 		}  catch (outOfBoundsException messageJ)
          {
             System.out.println(messageJ.getMessage());
          }
 		
-		
+	}
 		
 		
 	}
@@ -344,4 +364,4 @@ public static void refreshGameBoard2()
 	
 	
 	
-}
+

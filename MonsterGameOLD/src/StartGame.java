@@ -39,12 +39,13 @@ public class StartGame
 		Board.PlayerNumbers();
 		
 		Board.chooseStartPostion();
+		Board.refreshGameBoard2();
 		
 		//Board.refreshGameBoard();
 		
 		//Board.moveitem();
 		
-		//Board.moveItem2();
+		Board.moveItem2(1,"Down");
 		
 		//Board.refreshGameBoard();
 		Board.refreshGameBoard2();
