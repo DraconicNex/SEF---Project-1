@@ -141,7 +141,7 @@ public class TestToMoveOject
 	public void test2DArrayThree() throws outOfBoundsException
 	{
 		
-		// Through the gate
+		// Through the gate only
 		
 		
 		assertEquals(XCoord,0);
