@@ -1,8 +1,15 @@
+/ClientInterface.class
+/Console$1.class
 /Console$2.class
 /Console$3.class
 /Console$4.class
 /Console$5.class
 /Console$6.class
-/ClientServerRMITest.class
-/TestGameCheck.class
+/Console.class
+/Game.class
+/GameCheck.class
+/ServerInterface.class
+/StartServer.class
+/TestAddLobby.class
 /TestClientServerRMI.class
+/TestGameCheck.class
