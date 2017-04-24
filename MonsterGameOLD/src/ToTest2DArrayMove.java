@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class ToTest2DArrayMove
 {
-	private static Item[][] gameBoard;
+	//private  Item[][] gameBoard;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception 
@@ -73,10 +73,14 @@ public class ToTest2DArrayMove
 	@Test//
 	public void testBoard4() 
 	{
+		Monster m=new Monster("M");
 		// move out of bonds no move
         Board.moveItem2(1,"Up"); 		
  		System.out.println("After Move Test 4");
- 		//gameBoard[0][9] = new Monster("M");
+ 		Item testMonster= new Monster("M");
+ 		Board.changeItemOnGameBoard(8, 0, testMonster );
+ 		Board.moveItem2(1,"Right");
+ 		
 		
 	}
 	

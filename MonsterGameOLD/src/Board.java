@@ -276,6 +276,9 @@ public static void refreshGameBoard2()
 		
 		// test to find object need to pass in the object type monster player
 		
+		tempXA = boardSize +1;
+    	tempYA = boardSize +1;
+		
 			for (int i = 0; i < gameBoard.length; i++)
 			{
 				
@@ -297,17 +300,28 @@ public static void refreshGameBoard2()
 		      
 			}
 			
+			// Message if player number not in Array list
+			
+			if((tempXA == boardSize +1 ) & (tempYA == boardSize +1) )
+				
+			{
 
-        	System.out.println("Player " + Integer.toString(playerNumber)+" You Are already Sunk");
-        	
+        	      System.out.println("Player " + Integer.toString(playerNumber)+
+        			        " You are already Sunk");
+        	      //  print statements to test should be omitted.
+        	      System .out.println(tempXA +" " +tempYA +" inside sunk if");  
+   
+			}
+			
+			else
+			{
         
-			System .out.println(tempXA +" " +tempYA +" outside loop");  
 			
-			// once found find where to move and interrogate new square for outcome
+			  // once found find where to move and interrogate new square for outcome
 			
-			try
-			{  	 
-		       if (((gameBoard[tempXA][tempYA].getItemChar()).equals (Integer.toString(playerNumber))))
+			  try
+			  {  	 
+		         if (((gameBoard[tempXA][tempYA].getItemChar()).equals (Integer.toString(playerNumber))))
 		        	   {
 		    	         System .out.println(tempXA +" " +tempYA +" nested loop");
 		        	    newXCoord = MovableItem.moveItem2(tempXA,tempYA,direction,boardSize)[0];
@@ -351,23 +365,28 @@ public static void refreshGameBoard2()
 		        	            
 		        		      
 		        	   }
-		      
-		       
-		    
-	  	 
-		    
-	    
-		
 
-		}  catch (outOfBoundsException messageJ)
-         {
-            System.out.println(messageJ.getMessage());
-         }
-		
+
+		      }  catch (outOfBoundsException messageJ)
+			
+			         {
+			            System.out.println(messageJ.getMessage());
+			         }
+         
+			}
+         
+	}     
+         
+         
+/*---------------------------- Change Item at x and y coord game board----------------*/		
+	
+	public static void changeItemOnGameBoard(int XCoord,int YCoord, Item changeArrayItem )
+	{
+		gameBoard[XCoord][YCoord] = changeArrayItem;
 	}
 		
 		
-	}
+}
 	
 	
 	
