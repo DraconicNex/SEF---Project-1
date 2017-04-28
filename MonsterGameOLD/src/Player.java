@@ -78,17 +78,12 @@ public class Player extends MovableItem
            {
            case 'A':
         	   
-        	   /*
-        	    * 
-        	    * playersTemp =  new Player(1,1);
-        	      gamePlayers.add(playersTemp);
-        	      */
-        	      tempSquare = gameSquares.get((1*1)-1);
-			      System.out.println(tempSquare.getContents());
-			      playersTemp =  new Player(Integer.toString(playerNumber));
-			      tempSquare.changeContents(playersTemp);
-			      gameSquares.set(((1*1)-1),tempSquare);
-			      gameBoard[0][0] = playersTemp;
+        	   tempSquare = gameSquares.get((1*boardSize)-1);
+			   System.out.println(tempSquare.getContents());
+			   playersTemp =  new Player(Integer.toString(playerNumber));
+			   tempSquare.changeContents(playersTemp);
+			   gameSquares.set(((1*boardSize)-1),tempSquare);
+			   gameBoard[0][0] = playersTemp;
 			   
 			  
         	   

@@ -136,61 +136,17 @@ public class Board
 	
 	public static void chooseStartPostion()
 	{
+		int boardsize= Board.getBoardSize();
 		Player.addInitialPlayerPosition(boardSize,gameSquares,gamePlayers,gameBoard);
 	}
 	
 	
 	
-/*--------------------------- Refresh Display of Game Board--------------------------*/
-	
-	public static void refreshGameBoard()
-	
-	{
-		System.out.println(gameSquares.size() + " refreshed");
-		
-		
-		
-		for (int a = 1; a <= boardSize; a++)
-		{
-			for (int b = 1; b <= boardSize; b++)
-			{
-				
-				tempSquare= gameSquares.get((a*boardSize)-(boardSize-b)-1);
-				System.out.print(tempSquare.getContents().getItemChar());
-				
-			}
-			System.out.println();
-		}
-		System.out.println(gamePlayers.size() + " in while loop");
-		
-		
-	}
-	
+
 	/*--------------------------- Refresh Display of Game Board2--------------------------*/	
 	
 	
-public static void refreshGameBoard2()
-	
-	{
-		System.out.println(gameSquares.size() + " refreshed");
-		
-		
-		
-		for (int a = 0; a < boardSize; a++)
-		{
-			for (int b = 0; b < boardSize; b++)
-			{
-				
-				
-				System.out.print(gameBoard[b][a].getItemChar());
-				
-			}
-			System.out.println();
-		}
-		System.out.println("multidimensional array");
-		
-		
-	}
+
 	
 	/*--------------------------- Players--------------------------*/
 	
@@ -230,6 +186,16 @@ public static void refreshGameBoard2()
 	public static ArrayList<Square> gameSquares()
 	{
 		return gameSquares;
+	}
+	
+	public static int getBoardSize()
+	{
+		return boardSize;
+	}
+	
+	public static Item[][] getgameBoard()
+	{
+		return gameBoard;
 	}
 	
 /*--------------------------Move Item ----------------------------------------*/
@@ -331,23 +297,24 @@ public static void refreshGameBoard2()
 		        	 
 		        	       if (gameBoard[newXCoord][newYCoord] instanceof Wall)
 		        	           {
-		        		            refreshGameBoard2();
+		        		            
 		        		            System.out.println("You have run aground");
 		        		            
 		        	           }
 		        	      
 		        	       else if (gameBoard[newXCoord][newYCoord] instanceof Player)
 		        	    	   {
-		        		           refreshGameBoard2();
+		        		          
 		        		           System.out.println("Danger Will Robinson! Collision ");
 		        		          
 		        	    	   }       		      
 		        	       		        	 
 		        	       else if (gameBoard[newXCoord][newYCoord] instanceof Monster)
 		        	           {
-		        	  	            refreshGameBoard2();
+		        	  	           
 		        		            System.out.println("Danger Will Robinson! We are sunk. ");
 		        		            gamePlayers.remove(playerNumber);
+		        		            gameBoard[tempXA][tempYA] = new Floor("-");
 		        		           
 		        	           }
 		        	 
@@ -358,7 +325,7 @@ public static void refreshGameBoard2()
 		        		            tempItemC = tempItemB;
 		        		            gameBoard[newXCoord][newYCoord] = tempItemA;
 		        		            gameBoard[tempXA][tempYA] = tempItemC;
-		        		            refreshGameBoard2();	 
+		        		            	 
 		        		            
 		        	           }
 		        	      
@@ -389,7 +356,62 @@ public static void refreshGameBoard2()
 }
 	
 	
+/*   deprecated code
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * --------------------------- Refresh Display of Game Board--------------------------
 	
+	public static void refreshGameBoard()
+	
+	{
+		System.out.println(gameSquares.size() + " refreshed");
+		
+		
+		
+		for (int a = 1; a <= boardSize; a++)
+		{
+			for (int b = 1; b <= boardSize; b++)
+			{
+				
+				tempSquare= gameSquares.get((a*boardSize)-(boardSize-b)-1);
+				System.out.print(tempSquare.getContents().getItemChar());
+				
+			}
+			System.out.println();
+		}
+		System.out.println(gamePlayers.size() + " in while loop");
+		
+		
+	}
+	
+	public static void refreshGameBoard2()
+	
+	{
+		System.out.println(gameSquares.size() + " refreshed");
+		
+		
+		
+		for (int a = 0; a < boardSize; a++)
+		{
+			for (int b = 0; b < boardSize; b++)
+			{
+				
+				
+				System.out.print(gameBoard[b][a].getItemChar());
+				
+			}
+			System.out.println();
+		}
+		System.out.println("multidimensional array");
+		
+		
+	}
+		
+*/
 	
 	
 	

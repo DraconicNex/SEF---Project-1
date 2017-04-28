@@ -14,16 +14,22 @@ import org.junit.Test;
 
 public class ToTest2DArrayMove
 {
+	private static ServerConsoleOutput serverConsole;
+	private static ViewerType myViewerType;
+
 	//private  Item[][] gameBoard;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception 
+	
 	{
+		serverConsole = new ServerConsoleOutput();
+	    myViewerType = serverConsole;
 		Board.initialiseGameBoard();
 	    Board.PlayerNumbers();		
 		Board.chooseStartPostion();
 		
-		Board.refreshGameBoard2();
+		serverConsole.refreshBoard();
 	}
 
 	@AfterClass
@@ -49,6 +55,7 @@ public class ToTest2DArrayMove
  		Board.moveItem2(1,"Right");
  		Board.moveItem2(1,"Right");
  		Board.moveItem2(1,"Right");
+ 		serverConsole.refreshBoard();
  		System.out.println("After Move test one");
 	}
 		
@@ -57,6 +64,7 @@ public class ToTest2DArrayMove
 	{
 		// then one more right a collision player no move
 		Board.moveItem2(1,"Right");
+		serverConsole.refreshBoard();
  		
  		System.out.println("After Move Test 2");
 	}
@@ -65,7 +73,8 @@ public class ToTest2DArrayMove
 	public void testBoard3()
 	{
 		// then a collision wall no move
-        Board.moveItem2(1,"Down"); 		
+        Board.moveItem2(1,"Down"); 
+        serverConsole.refreshBoard();
  		System.out.println("After Move Test 3");
 		
 	}
@@ -73,13 +82,16 @@ public class ToTest2DArrayMove
 	@Test//
 	public void testBoard4() 
 	{
-		Monster m=new Monster("M");
+		
 		// move out of bonds no move
         Board.moveItem2(1,"Up"); 		
  		System.out.println("After Move Test 4");
+ 		serverConsole.refreshBoard();
+ 		// move test to run into monster
  		Item testMonster= new Monster("M");
  		Board.changeItemOnGameBoard(8, 0, testMonster );
  		Board.moveItem2(1,"Right");
+ 		serverConsole.refreshBoard();
  		
 		
 	}
