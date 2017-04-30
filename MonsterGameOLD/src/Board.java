@@ -193,7 +193,7 @@ public class Board
 		return boardSize;
 	}
 	
-	public static Item[][] getgameBoard()
+	public static Item[][] getGameBoard()
 	{
 		return gameBoard;
 	}

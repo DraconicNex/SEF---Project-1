@@ -14,7 +14,7 @@ public class ServerConsoleOutput extends ViewerType
 		
 		
 	 boardSize = Board.getBoardSize();
-	 gameBoard = Board.getgameBoard();
+	 gameBoard = Board.getGameBoard();
 		
          System.out.println(boardSize+ "  viewer type refreshed");
 		
