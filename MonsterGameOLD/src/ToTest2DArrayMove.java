@@ -15,7 +15,8 @@ import org.junit.Test;
 public class ToTest2DArrayMove
 {
 	private static ServerConsoleOutput serverConsole;
-	private static ViewerType myViewerType;
+	private static PlayerScreenOutput playerScreen;
+	//private static ViewerType myViewerType;
 
 	//private  Item[][] gameBoard;
 
@@ -24,12 +25,15 @@ public class ToTest2DArrayMove
 	
 	{
 		serverConsole = new ServerConsoleOutput();
-	    myViewerType = serverConsole;
+		playerScreen = new PlayerScreenOutput();
+	   //myViewerType = serverConsole;
+	    
 		Board.initialiseGameBoard();
 	    Board.PlayerNumbers();		
 		Board.chooseStartPostion();
 		
 		serverConsole.refreshBoard();
+		playerScreen.refreshBoard();
 	}
 
 	@AfterClass

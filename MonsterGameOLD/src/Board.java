@@ -136,7 +136,7 @@ public class Board
 	
 	public static void chooseStartPostion()
 	{
-		int boardsize= Board.getBoardSize();
+		
 		Player.addInitialPlayerPosition(boardSize,gameSquares,gamePlayers,gameBoard);
 	}
 	

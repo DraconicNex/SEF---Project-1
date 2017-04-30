@@ -1,26 +1,30 @@
 import java.awt.*;
+
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import javax.swing.border.*;
 
+/*
+ * this code is a modified version from the following web page
+ * http://stackoverflow.com/questions/21077322/create-a-chess-board-with-jpanel
+ */
 
-
-public class PlayerScreenOuput extends ViewerType
+public class PlayerScreenOutput extends ViewerType
 {
 
 
 
     private final JPanel gui = new JPanel(new BorderLayout(3, 3));
-    private JButton[][] chessBoardSquares;
+    private JButton[][]gameBoardSquares;
     private JPanel chessBoard;
     private final JLabel message = new JLabel(
             "Pirates of the Penzance");
-    private static final String COLS = "ABCDEFGHI";
+   // private static final String COLS = "ABCDEFGHI";
     private static Item[][] gameBoard ;
     private static int boardSize;
     private static ImageIcon icon;
 
-    PlayerScreenOuput() 
+    PlayerScreenOutput() 
     {
         initializeGui();
     }
@@ -29,7 +33,7 @@ public class PlayerScreenOuput extends ViewerType
     {
     	boardSize =Board.getBoardSize();
     	gameBoard  = Board.getGameBoard();
-    	chessBoardSquares = new JButton[boardSize][boardSize];
+    	gameBoardSquares = new JButton[boardSize][boardSize];
     	 
     	
     	
@@ -47,26 +51,30 @@ public class PlayerScreenOuput extends ViewerType
         tools.addSeparator();
         tools.add(message);
 
-        gui.add(new JLabel("?"), BorderLayout.LINE_START);
+       // gui.add(new JLabel("?"), BorderLayout.LINE_START);
 
-        chessBoard = new JPanel(new GridLayout(0, (boardSize+1)));
+        chessBoard = new JPanel(new GridLayout(0,9));
+        chessBoard.setBackground(Color.CYAN);
         chessBoard.setBorder(new LineBorder(Color.BLACK));
         gui.add(chessBoard);
 
-        // create the chess board squares
+        // create the game board squares
+        
         Insets buttonMargin = new Insets(0,0,0,0);
-        for (int ii = 0; ii < chessBoardSquares.length; ii++) {
-            for (int jj = 0; jj < chessBoardSquares[ii].length; jj++) {
+        for (int ii = 0; ii < gameBoardSquares.length; ii++) {
+            for (int jj = 0; jj < gameBoardSquares[ii].length; jj++) {
                 JButton b = new JButton();
                 b.setMargin(buttonMargin);
-                // our chess pieces are 64x64 px in size, so we'll
+                b.setBackground(Color.CYAN);
+                
                 // 'fill this in' using a transparent icon..
+                
                 if((gameBoard[jj][ii] instanceof Player) &&
         		        ((gameBoard[jj][ii].getItemChar()).equals(Integer.toString(1)))) 
                 {
                 	icon = new ImageIcon("src/player1.png");
                     b.setIcon(icon);
-                    chessBoardSquares[jj][ii] = b;
+                    gameBoardSquares[jj][ii] = b;
                 }
                 
                 else if((gameBoard[jj][ii] instanceof Player) &&
@@ -74,7 +82,7 @@ public class PlayerScreenOuput extends ViewerType
                 {
                 	icon = new ImageIcon("src/player2.png");
                     b.setIcon(icon);
-                    chessBoardSquares[jj][ii] = b;
+                    gameBoardSquares[jj][ii] = b;
                 }
                 
                 else if((gameBoard[jj][ii] instanceof Player) &&
@@ -82,7 +90,7 @@ public class PlayerScreenOuput extends ViewerType
                 {
                 	icon = new ImageIcon("src/player3.png");
                     b.setIcon(icon);
-                    chessBoardSquares[jj][ii] = b;
+                    gameBoardSquares[jj][ii] = b;
                 }
                 
                 else if((gameBoard[jj][ii] instanceof Player) &&
@@ -90,7 +98,7 @@ public class PlayerScreenOuput extends ViewerType
                 {
                 	icon = new ImageIcon("src/player4.png");
                     b.setIcon(icon);
-                    chessBoardSquares[jj][ii] = b;
+                    gameBoardSquares[jj][ii] = b;
                 }
                 
                 else if((gameBoard[jj][ii] instanceof Monster) &&
@@ -98,45 +106,34 @@ public class PlayerScreenOuput extends ViewerType
                 {
                 	icon = new ImageIcon("src/monster.png");
                     b.setIcon(icon);
-                    chessBoardSquares[jj][ii] = b;
+                    gameBoardSquares[jj][ii] = b;
                 }
                 else if((gameBoard[jj][ii] instanceof Wall) &&
         		        ((gameBoard[jj][ii].getItemChar()).equals("*"))) 
                 {
                 	icon = new ImageIcon("src/wall.png");
                     b.setIcon(icon);
-                    chessBoardSquares[jj][ii] = b;
+                    gameBoardSquares[jj][ii] = b;
                 }
                                
                 else 
                 {
-                icon = new ImageIcon("");
-                b.setIcon(icon);       
-                chessBoardSquares[jj][ii] = b;
+                    icon = new ImageIcon("");
+                    b.setIcon(icon);       
+                    gameBoardSquares[jj][ii] = b;
                 }
             }
         }
 
-        //fill the chess board
-        chessBoard.add(new JLabel(""));
-        // fill the top row
-        for (int ii = 0; ii < boardSize; ii++) {
-            chessBoard.add(
-                    new JLabel(COLS.substring(ii, ii + 1),
-                    SwingConstants.CENTER));
-        }
-        // fill the black non-pawn piece row
+       
+        
         for (int ii = 0; ii < boardSize; ii++) {
             for (int jj = 0; jj < boardSize; jj++) {
-                switch (jj) {
-                    case 0:
-                        chessBoard.add(new JLabel("" + (ii + 1),
-                                SwingConstants.CENTER));
-                    default:
-                        chessBoard.add(chessBoardSquares[jj][ii]);
+               
+                   chessBoard.add(gameBoardSquares[jj][ii]);
                 }
             }
-        }
+        
     }
 
     public final JComponent getChessBoard() {
@@ -153,11 +150,11 @@ public class PlayerScreenOuput extends ViewerType
 
             @Override
             public void run() {
-                PlayerScreenOuput cb =
-                        new PlayerScreenOuput();
+                PlayerScreenOutput cb =
+                        new PlayerScreenOutput();
 
-                JFrame f = new JFrame("ChessChamp");
-                f.add(cb.getGui());
+                JFrame f = new JFrame(Integer.toString(boardSize));
+                f.getContentPane().add(cb.getGui());
                 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 f.setLocationByPlatform(true);
 
@@ -173,3 +170,16 @@ public class PlayerScreenOuput extends ViewerType
     }
 
 }
+
+
+/*--------------------     Code Not Neded----------------------------*/
+
+//fill the chess board
+//chessBoard.add(new JLabel(""));
+// fill the top row
+/* for (int ii = 0; ii < boardSize; ii++) {
+    chessBoard.add(
+            new JLabel(COLS.substring(ii, ii + 1),
+            SwingConstants.CENTER));
+}
+*/

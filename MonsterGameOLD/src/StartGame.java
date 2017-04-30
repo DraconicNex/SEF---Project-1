@@ -8,6 +8,8 @@ import java.util.*;
 public class StartGame 
 {
 	//private static final Scanner sc = new Scanner(System.in);
+	
+	private static ViewerType myViewerType,playerViewerType;
 
 	
 
@@ -24,11 +26,10 @@ public class StartGame
 		
 		
 		int numOfPlayers = 0;
-		ServerConsoleOutput serverConsole = new ServerConsoleOutput();
-		PlayerScreenOuput playerConsole = new PlayerScreenOuput();
+		 myViewerType = new ServerConsoleOutput();
+		 playerViewerType = new PlayerScreenOutput();
 		
-		ViewerType myViewerType = serverConsole;
-		ViewerType playerViewerType = playerConsole;
+		
 		
 		
 	   
@@ -39,31 +40,33 @@ public class StartGame
 	    
 		Board.initialiseGameBoard();
 		
-		serverConsole.refreshBoard();
+		playerViewerType.refreshBoard();
+		playerViewerType.refreshBoard();
 				
 		Board.PlayerNumbers();
 		
 		Board.chooseStartPostion();
-		//Board.refreshGameBoard2();
+		playerViewerType.refreshBoard();
 		
-		//Board.refreshGameBoard();
-		
-		//Board.moveitem();
-		
+	
 		Board.moveItem2(1,"Down");
-		serverConsole.refreshBoard();
+		myViewerType.refreshBoard();
+		playerViewerType.refreshBoard();
+
+		
 		Board.moveItem2(2,"Left");
-		serverConsole.refreshBoard();
+		myViewerType.refreshBoard();
+		playerViewerType.refreshBoard();
 		Board.moveItem2(3,"Up");
-		serverConsole.refreshBoard();
+		myViewerType.refreshBoard();
+		playerViewerType.refreshBoard();
 		Board.moveItem2(4,"Left");
-		serverConsole.refreshBoard();
+		myViewerType.refreshBoard();
+		playerViewerType.refreshBoard();
 			
-		//Board.refreshGameBoard();
-		//Board.refreshGameBoard2();
-		 
-		 serverConsole.refreshBoard();
-		 playerConsole.refreshBoard();
+			 
+		 myViewerType.refreshBoard();
+		 playerViewerType.refreshBoard();
 		  
 		
 		
