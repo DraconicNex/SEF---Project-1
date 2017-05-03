@@ -205,6 +205,7 @@ public class Board
  */
 	public static void calculatePlayerCoordsForMonster()
 	{
+		playerCoordsForMonster.clear();
 		for (int m = 0; m < gameBoard.length; m++)
 		{
 			
@@ -217,7 +218,7 @@ public class Board
 	    		  
 	    		       playerCoordsForMonster.add(posn);
 	    		       
-	    		       System.out.println("in calculate posn method " + playerCoordsForMonster.size());
+	    		      
 	    		        
 	    		  
 	    			  }
@@ -226,6 +227,7 @@ public class Board
 	      }
 		}
 		
+		 Monster.moveMonsterDirection( playerCoordsForMonster );
 		//return playerCoordsForMonster;
 	}
 	
@@ -238,7 +240,7 @@ public class Board
 /*----------------------------------moveItem 2D Array----------------------------------------*/	
 	
 	
-	public static void moveItem2(int playerNumber,String direction)
+	public static void moveItem2(String itemChar,String direction)
 	{
 		
 		// test to find object need to pass in the object type monster player
@@ -252,12 +254,12 @@ public class Board
 				
 		      for (int j = 0; j < gameBoard[i].length; j++) 
 		      {
-		        if ((gameBoard[j][i] instanceof Player) &&
-		        ((gameBoard[j][i].getItemChar()).equals(Integer.toString(playerNumber))))
+		        if ((gameBoard[j][i] instanceof MovableItem) &&
+		        ((gameBoard[j][i].getItemChar()).equals(itemChar)))
 		        	
 		        {
 		        	System.out.println(gameBoard[j][i].getItemChar());
-		        	System.out.println(Integer.toString(playerNumber));
+		        	
 		        	tempXA = j;
 		        	tempYA =i;
 		        	System .out.println(tempXA +" " +tempYA+" inside loop");
@@ -267,13 +269,15 @@ public class Board
 		      }
 			}
 			
+			 
+			
 			// Message if player number not in Array list
 			
 			if((tempXA == boardSize +1 ) & (tempYA == boardSize +1) )
 				
 			{
 
-        	      System.out.println("Player " + Integer.toString(playerNumber)+
+        	      System.out.println("Player " + itemChar+
         			        " You are already Sunk");
         	      //  print statements to test should be omitted.
         	      System .out.println(tempXA +" " +tempYA +" inside sunk if");  
@@ -288,7 +292,7 @@ public class Board
 			
 			  try
 			  {  	 
-		         if (((gameBoard[tempXA][tempYA].getItemChar()).equals (Integer.toString(playerNumber))))
+		         if (((gameBoard[tempXA][tempYA].getItemChar()).equals (itemChar)))
 		        	   {
 		    	         System .out.println(tempXA +" " +tempYA +" nested loop");
 		        	    newXCoord = MovableItem.moveItem2(tempXA,tempYA,direction,boardSize)[0];

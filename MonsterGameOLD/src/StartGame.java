@@ -69,22 +69,10 @@ public class StartGame
 		 
 		  
 		
-		    Board.moveItem2(1,"Right");
+		    Board.moveItem2("M","Left");
+		    myViewerType.refreshBoard();
 		    playerViewerType.refreshBoard();
-	 		Board.moveItem2(1,"Right");
-	 		playerViewerType.refreshBoard();
-	 		Board.moveItem2(1,"Right");
-	 		playerViewerType.refreshBoard();
-	 		Board.moveItem2(1,"Right");
-	 		playerViewerType.refreshBoard();
-	 		Board.moveItem2(1,"Right");
-	 		playerViewerType.refreshBoard();
-	 		Board.moveItem2(1,"Right");
-	 		playerViewerType.refreshBoard();
-	 		Board.moveItem2(1,"Right");
-	 		myViewerType.refreshBoard();
-			playerViewerType.refreshBoard();
-
+	 		
 		
 
 		
