@@ -1,5 +1,6 @@
 import java.awt.*;
 
+
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -7,6 +8,9 @@ import javax.swing.border.*;
 /*
  * this code is a modified version from the following web page
  * http://stackoverflow.com/questions/21077322/create-a-chess-board-with-jpanel
+ * 
+ * 
+ * 
  */
 
 public class PlayerScreenOutput extends ViewerType
@@ -14,15 +18,17 @@ public class PlayerScreenOutput extends ViewerType
 
 
 
-    private final JPanel gui = new JPanel(new BorderLayout(3, 3));
-    private JButton[][]gameBoardSquares;
-    private JPanel chessBoard;
-    private final JLabel message = new JLabel(
+	public final JPanel gui = new JPanel(new BorderLayout(3, 3));
+	public JButton[][]gameBoardSquares;
+	public JPanel playerBoard;
+	public JFrame f;
+    private GridLayout playerGrid;
+    public final JLabel message = new JLabel(
             "Pirates of the Penzance");
    // private static final String COLS = "ABCDEFGHI";
-    private static Item[][] gameBoard ;
-    private static int boardSize;
-    private static ImageIcon icon;
+    public  Item[][] gameBoard ;
+    public  int boardSize ;
+    public  ImageIcon icon;
 
     PlayerScreenOutput() 
     {
@@ -31,8 +37,8 @@ public class PlayerScreenOutput extends ViewerType
 
     public final void initializeGui() 
     {
-    	boardSize =Board.getBoardSize();
-    	gameBoard  = Board.getGameBoard();
+    	boardSize = Board.getBoardSize();
+    	gameBoard  =  Board.getGameBoard();
     	gameBoardSquares = new JButton[boardSize][boardSize];
     	 
     	
@@ -52,11 +58,14 @@ public class PlayerScreenOutput extends ViewerType
         tools.add(message);
 
        // gui.add(new JLabel("?"), BorderLayout.LINE_START);
-
-        chessBoard = new JPanel(new GridLayout(0,9));
-        chessBoard.setBackground(Color.CYAN);
-        chessBoard.setBorder(new LineBorder(Color.BLACK));
-        gui.add(chessBoard);
+        
+        System.out.println("value in player out " + boardSize);
+        int testRolColVar = 9;
+        playerGrid =  new GridLayout(testRolColVar,testRolColVar);
+        playerBoard = new JPanel(playerGrid);
+        playerBoard.setBackground(Color.CYAN);
+        playerBoard.setBorder(new LineBorder(Color.BLACK));
+        gui.add(playerBoard);
 
         // create the game board squares
         
@@ -130,14 +139,14 @@ public class PlayerScreenOutput extends ViewerType
         for (int ii = 0; ii < boardSize; ii++) {
             for (int jj = 0; jj < boardSize; jj++) {
                
-                   chessBoard.add(gameBoardSquares[jj][ii]);
+            	playerBoard.add(gameBoardSquares[jj][ii]);
                 }
             }
         
     }
 
     public final JComponent getChessBoard() {
-        return chessBoard;
+        return playerBoard;
     }
 
     public final JComponent getGui() {
@@ -153,8 +162,10 @@ public class PlayerScreenOutput extends ViewerType
                 PlayerScreenOutput cb =
                         new PlayerScreenOutput();
 
-                JFrame f = new JFrame(Integer.toString(boardSize));
+                 f = new JFrame("Multi Player Pirate Game");
+                
                 f.getContentPane().add(cb.getGui());
+                
                 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 f.setLocationByPlatform(true);
 
@@ -164,10 +175,22 @@ public class PlayerScreenOutput extends ViewerType
                 // ensures the minimum size is enforced.
                 f.setMinimumSize(f.getSize());
                 f.setVisible(true);
+                f.invalidate();
+                f.repaint();
+                
             }
         };
-        SwingUtilities.invokeLater(r);
+        try 
+        {
+            SwingUtilities.invokeAndWait(r);
+        }
+        catch (Exception e) 
+        {
+            e.printStackTrace();
+        }
+        System.out.println("Finished on " + Thread.currentThread());
     }
+    
 
 }
 

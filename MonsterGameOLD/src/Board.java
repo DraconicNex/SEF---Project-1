@@ -5,16 +5,18 @@ public class Board
 {
 	//testing testing 1,2!!
 	//bloody dual security 
-	private static ArrayList<Square> gameSquares = new ArrayList<Square>() ;
-	private static ArrayList<Player> gamePlayers = new ArrayList<Player>();
-	private static Square tempSquare,updatedTempSquare, tempSquareA,
+	public static ArrayList<Square> gameSquares = new ArrayList<Square>() ;
+	public static ArrayList<Player> gamePlayers = new ArrayList<Player>();
+	public static int posn[] = new int[2];
+	public static ArrayList<int[]> playerCoordsForMonster = new ArrayList<int []>();
+	public static Square tempSquare,updatedTempSquare, tempSquareA,
 	                      tempSquareB;
-	private static Player tempPlayer,temp;
-	private static final Scanner sc = new Scanner(System.in);  
-	private static int numberOfPlayers ,tempXA, tempYA ,tempXB, 
+	public static Player tempPlayer,temp;
+	public static final Scanner sc = new Scanner(System.in);  
+	public static int numberOfPlayers ,tempXA, tempYA ,tempXB, 
 	                      tempYB, playerNumber,
 	                      newXCoord, newYCoord;
-	private static String  direction;
+	public static String  direction;
 	private static Monster gameMonster;
 	private static int boardSize;
 	private static Item tempItem ,tempItemA, tempItemB, tempItemC;
@@ -25,7 +27,7 @@ public class Board
 	{
 		
 		// test  11:20 18 Apr
-		
+			
 		
 	}
 	
@@ -145,7 +147,7 @@ public class Board
 
 	/*--------------------------- Refresh Display of Game Board2--------------------------*/	
 	
-	
+	// now in viewer class
 
 	
 	/*--------------------------- Players--------------------------*/
@@ -198,42 +200,41 @@ public class Board
 		return gameBoard;
 	}
 	
+/*----------------Sets up array to hold player positions to pass to Monster
+ *                to calculate movement direction------------------------------
+ */
+	public static void calculatePlayerCoordsForMonster()
+	{
+		for (int m = 0; m < gameBoard.length; m++)
+		{
+			
+	      for (int n = 0; n < gameBoard[m].length; n++) 
+	      {
+	    	  if (gameBoard[m][n] instanceof Player)
+	    			  {
+	    		  		posn[0] = n;
+	    		  		posn[1] = m;
+	    		  
+	    		       playerCoordsForMonster.add(posn);
+	    		       
+	    		       System.out.println("in calculate posn method " + playerCoordsForMonster.size());
+	    		        
+	    		  
+	    			  }
+	     
+
+	      }
+		}
+		
+		//return playerCoordsForMonster;
+	}
+	
 /*--------------------------Move Item ----------------------------------------*/
 	
-	public static void moveitem()
-	{
-		direction ="Right";
-		tempPlayer = new Player ("A");
-		tempSquare = new Square(9,5,tempPlayer);
-		tempSquareA = tempSquare;
-		tempItemA = tempSquareA.getContents();
-		System.out.println("before move " + tempSquareA.getX()
-	       +" "+ tempSquareA.getY()+" "+tempSquareA.getContents().getItemChar());
-		
-		gameSquares.set(((tempSquareA.getY()*boardSize)-
-				(boardSize-tempSquareA.getX())-1), tempSquareA);
-		try {
-			 MovableItem.moveItem(direction,tempSquare,boardSize);
-			 			 
-			
-		} catch (outOfBoundsException messageJ)
-         {
-            System.out.println(messageJ.getMessage());
-         }
-		System.out.println("new move item " + tempSquare.getX()
-		       +" "+ tempSquare.getY());
-		
-		tempSquareB = tempSquare;
-		tempItemB = tempSquareB.getContents();
-		tempItemC = tempItemA;
-		
-		tempSquareA.changeContents(tempItemB);
-		tempSquareB.changeContents(tempItemC);
-		System.out.println("new move item " + tempSquareA.getX()
-	       +" "+ tempSquareA.getY());
-		
-	}	
-		
+	//Redundant Code see below. Uses Arraylist
+	
+	
+	
 /*----------------------------------moveItem 2D Array----------------------------------------*/	
 	
 	
@@ -244,6 +245,7 @@ public class Board
 		
 		tempXA = boardSize +1;
     	tempYA = boardSize +1;
+    	
 		
 			for (int i = 0; i < gameBoard.length; i++)
 			{
@@ -263,7 +265,6 @@ public class Board
 		        
 		        
 		      }
-		      
 			}
 			
 			// Message if player number not in Array list
@@ -295,7 +296,7 @@ public class Board
 		        	 
 		        	     System .out.println(tempXA +" " +tempYA+" " + newXCoord+" " +newYCoord);
 		        	 
-		        	       if (gameBoard[newXCoord][newYCoord] instanceof Wall)
+		        	        if (gameBoard[newXCoord][newYCoord] instanceof Wall)
 		        	           {
 		        		            
 		        		            System.out.println("You have run aground");
@@ -410,6 +411,41 @@ public class Board
 		
 		
 	}
+	
+	public static void moveitem()
+	{
+		direction ="Right";
+		tempPlayer = new Player ("A");
+		tempSquare = new Square(9,5,tempPlayer);
+		tempSquareA = tempSquare;
+		tempItemA = tempSquareA.getContents();
+		System.out.println("before move " + tempSquareA.getX()
+	       +" "+ tempSquareA.getY()+" "+tempSquareA.getContents().getItemChar());
+		
+		gameSquares.set(((tempSquareA.getY()*boardSize)-
+				(boardSize-tempSquareA.getX())-1), tempSquareA);
+		try {
+			 MovableItem.moveItem(direction,tempSquare,boardSize);
+			 			 
+			
+		} catch (outOfBoundsException messageJ)
+         {
+            System.out.println(messageJ.getMessage());
+         }
+		System.out.println("new move item " + tempSquare.getX()
+		       +" "+ tempSquare.getY());
+		
+		tempSquareB = tempSquare;
+		tempItemB = tempSquareB.getContents();
+		tempItemC = tempItemA;
+		
+		tempSquareA.changeContents(tempItemB);
+		tempSquareB.changeContents(tempItemC);
+		System.out.println("new move item " + tempSquareA.getX()
+	       +" "+ tempSquareA.getY());
+		
+	}	
+		
 		
 */
 	

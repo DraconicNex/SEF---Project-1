@@ -40,15 +40,16 @@ public class StartGame
 	    
 		Board.initialiseGameBoard();
 		
-		playerViewerType.refreshBoard();
+		myViewerType.refreshBoard();
 		playerViewerType.refreshBoard();
 				
 		Board.PlayerNumbers();
 		
 		Board.chooseStartPostion();
+		myViewerType.refreshBoard();
 		playerViewerType.refreshBoard();
 		
-	
+	    /*
 		Board.moveItem2(1,"Down");
 		myViewerType.refreshBoard();
 		playerViewerType.refreshBoard();
@@ -64,12 +65,25 @@ public class StartGame
 		myViewerType.refreshBoard();
 		playerViewerType.refreshBoard();
 			
-			 
-		 myViewerType.refreshBoard();
-		 playerViewerType.refreshBoard();
+		*/	 
+		 
 		  
 		
-		
+		    Board.moveItem2(1,"Right");
+		    playerViewerType.refreshBoard();
+	 		Board.moveItem2(1,"Right");
+	 		playerViewerType.refreshBoard();
+	 		Board.moveItem2(1,"Right");
+	 		playerViewerType.refreshBoard();
+	 		Board.moveItem2(1,"Right");
+	 		playerViewerType.refreshBoard();
+	 		Board.moveItem2(1,"Right");
+	 		playerViewerType.refreshBoard();
+	 		Board.moveItem2(1,"Right");
+	 		playerViewerType.refreshBoard();
+	 		Board.moveItem2(1,"Right");
+	 		myViewerType.refreshBoard();
+			playerViewerType.refreshBoard();
 
 		
 

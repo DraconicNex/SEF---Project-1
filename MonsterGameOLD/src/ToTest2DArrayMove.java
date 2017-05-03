@@ -14,8 +14,7 @@ import org.junit.Test;
 
 public class ToTest2DArrayMove
 {
-	private static ServerConsoleOutput serverConsole;
-	private static PlayerScreenOutput playerScreen;
+	private static ViewerType myViewerType,playerViewerType;
 	//private static ViewerType myViewerType;
 
 	//private  Item[][] gameBoard;
@@ -24,16 +23,15 @@ public class ToTest2DArrayMove
 	public static void setUpBeforeClass() throws Exception 
 	
 	{
-		serverConsole = new ServerConsoleOutput();
-		playerScreen = new PlayerScreenOutput();
-	   //myViewerType = serverConsole;
+		myViewerType = new ServerConsoleOutput();
+		playerViewerType = new PlayerScreenOutput();
 	    
 		Board.initialiseGameBoard();
 	    Board.PlayerNumbers();		
 		Board.chooseStartPostion();
 		
-		serverConsole.refreshBoard();
-		playerScreen.refreshBoard();
+		myViewerType.refreshBoard();
+		playerViewerType.refreshBoard();
 	}
 
 	@AfterClass
@@ -59,7 +57,7 @@ public class ToTest2DArrayMove
  		Board.moveItem2(1,"Right");
  		Board.moveItem2(1,"Right");
  		Board.moveItem2(1,"Right");
- 		serverConsole.refreshBoard();
+ 		myViewerType.refreshBoard();
  		System.out.println("After Move test one");
 	}
 		
@@ -68,7 +66,7 @@ public class ToTest2DArrayMove
 	{
 		// then one more right a collision player no move
 		Board.moveItem2(1,"Right");
-		serverConsole.refreshBoard();
+		myViewerType.refreshBoard();
  		
  		System.out.println("After Move Test 2");
 	}
@@ -78,7 +76,7 @@ public class ToTest2DArrayMove
 	{
 		// then a collision wall no move
         Board.moveItem2(1,"Down"); 
-        serverConsole.refreshBoard();
+        myViewerType.refreshBoard();
  		System.out.println("After Move Test 3");
 		
 	}
@@ -90,12 +88,12 @@ public class ToTest2DArrayMove
 		// move out of bonds no move
         Board.moveItem2(1,"Up"); 		
  		System.out.println("After Move Test 4");
- 		serverConsole.refreshBoard();
+ 		myViewerType.refreshBoard();
  		// move test to run into monster
  		Item testMonster= new Monster("M");
  		Board.changeItemOnGameBoard(8, 0, testMonster );
  		Board.moveItem2(1,"Right");
- 		serverConsole.refreshBoard();
+ 		myViewerType.refreshBoard();
  		
 		
 	}

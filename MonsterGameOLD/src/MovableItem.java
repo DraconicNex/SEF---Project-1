@@ -148,7 +148,7 @@ public class MovableItem extends Item {
         
         else if (direction =="Down")
             {
-   	           if ((YCoord  > boardSize-1) && (XCoord != boardSize/2))
+   	           if ((YCoord == boardSize-1) && (XCoord != boardSize/2))
    	               {
    		            throw new outOfBoundsException("Out of Bounds Bottom");
    	               }
@@ -195,7 +195,7 @@ public class MovableItem extends Item {
 
     else if (direction =="Right")
     {
-   	 if ((XCoord  > boardSize - 1)&& 
+   	 if ((XCoord  == (boardSize - 1))&& 
 		     (YCoord != ((boardSize/2) )))
    	 {
    		 throw new outOfBoundsException("Out of Bounds Right");
