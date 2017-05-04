@@ -1,6 +1,8 @@
 
-public class ViewerType {
+public abstract class ViewerType {
 
+	
+	
 	public ViewerType()
 	{
 		
