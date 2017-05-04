@@ -1,9 +1,11 @@
 import java.util.*;
 
 
-public class Item{
+public abstract class Item{
 	
 	public String itemChar;
+	
+	
 
 
 	public Item(String itemChar) 

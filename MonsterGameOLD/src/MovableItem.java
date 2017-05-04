@@ -4,7 +4,7 @@ import java.util.*;
 
 
 
-public class MovableItem extends Item {
+public abstract class MovableItem extends Item {
 	
 	public boolean canMove;
 	public static int tempInt;
