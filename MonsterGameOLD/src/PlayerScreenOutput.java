@@ -70,8 +70,8 @@ public class PlayerScreenOutput extends ViewerType
         // create the game board squares
         
         Insets buttonMargin = new Insets(0,0,0,0);
-        for (int ii = 0; ii < gameBoardSquares.length; ii++) {
-            for (int jj = 0; jj < gameBoardSquares[ii].length; jj++) {
+        for (int ii = 0; ii < boardSize; ii++) {
+            for (int jj = 0; jj < boardSize; jj++) {
                 JButton b = new JButton();
                 b.setMargin(buttonMargin);
                 b.setBackground(Color.CYAN);
@@ -177,6 +177,7 @@ public class PlayerScreenOutput extends ViewerType
                 f.setVisible(true);
                 f.invalidate();
                 f.repaint();
+                f.revalidate();
                 
             }
         };
