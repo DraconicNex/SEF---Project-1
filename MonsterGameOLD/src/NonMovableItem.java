@@ -2,7 +2,7 @@ import java.util.*;
 
 
 
-public class NonMovableItem extends Item
+public abstract class NonMovableItem extends Item
 {
 	
 
