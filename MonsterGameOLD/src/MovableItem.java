@@ -6,15 +6,15 @@ import java.util.*;
 
 public abstract class MovableItem extends Item {
 	
-	public boolean canMove;
+	
 	public static int tempInt;
-	private static Item[][] gameBoard ;
-	private static int[] results;
+	public static Item[][] gameBoard ;
+	public static int[] results;
 
 	public MovableItem(String itemChar) 
 	{
 		super(itemChar);
-		this.canMove = true;
+		
 	}
 
 	

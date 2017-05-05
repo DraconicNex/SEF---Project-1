@@ -1,12 +1,12 @@
 
 public class ServerConsoleOutput extends ViewerType
 {
-	public static int boardSize;
-	public static Item[][] gameBoard;
+	public  int boardSize;
+	public  Item[][] gameBoard;
 
 	public ServerConsoleOutput() 
 	{
-		super();
+		
 	}
 	
 	public   void refreshBoard()
