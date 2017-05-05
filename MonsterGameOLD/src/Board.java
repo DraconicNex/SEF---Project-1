@@ -317,17 +317,8 @@ public class Board
 		        	       else if (gameBoard[newXCoord][newYCoord] instanceof Monster)
 		        	           {
 		        	  	           
-		        		            System.out.println("Danger Will Robinson! We are sunk.");
-		        		            for (int p = 0; p < gamePlayers.size(); p++)
-		        		            {
-		        		            	if (gamePlayers.get(p).getItemChar().equals(itemChar))
-		        		            	{
-		        		            		gamePlayers.remove(p);
-		        		            	}
-		        		            }
-		        		            		        		            
-		        		            System.out.println("value of player length " + gamePlayers.size());
-		        		            
+		        		            System.out.println("Danger Will Robinson! We are sunk. ");
+		        		            gamePlayers.remove(playerNumber);
 		        		            gameBoard[tempXA][tempYA] = new Floor("-");
 		        		           
 		        	           }

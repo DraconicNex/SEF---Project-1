@@ -76,20 +76,22 @@ public class PlayerScreenOutput extends ViewerType
                 b.setMargin(buttonMargin);
                 b.setBackground(Color.CYAN);
                 
+                
                 // 'fill this in' using a transparent icon..
                 
                 if((gameBoard[jj][ii] instanceof Player) &&
         		        ((gameBoard[jj][ii].getItemChar()).equals(Integer.toString(1)))) 
                 {
-                	icon = new ImageIcon("src/player1.png");
+                	icon = new ImageIcon("src/images/player1.png");
                     b.setIcon(icon);
                     gameBoardSquares[jj][ii] = b;
+                    System.out.println("inside button player 1");
                 }
                 
                 else if((gameBoard[jj][ii] instanceof Player) &&
         		        ((gameBoard[jj][ii].getItemChar()).equals(Integer.toString(2)))) 
                 {
-                	icon = new ImageIcon("src/player2.png");
+                	icon = new ImageIcon("src/images/player2.png");
                     b.setIcon(icon);
                     gameBoardSquares[jj][ii] = b;
                 }
@@ -97,7 +99,7 @@ public class PlayerScreenOutput extends ViewerType
                 else if((gameBoard[jj][ii] instanceof Player) &&
         		        ((gameBoard[jj][ii].getItemChar()).equals(Integer.toString(3)))) 
                 {
-                	icon = new ImageIcon("src/player3.png");
+                	icon = new ImageIcon("src/images/player3.png");
                     b.setIcon(icon);
                     gameBoardSquares[jj][ii] = b;
                 }
@@ -105,7 +107,7 @@ public class PlayerScreenOutput extends ViewerType
                 else if((gameBoard[jj][ii] instanceof Player) &&
         		        ((gameBoard[jj][ii].getItemChar()).equals(Integer.toString(4)))) 
                 {
-                	icon = new ImageIcon("src/player4.png");
+                	icon = new ImageIcon("src/images/player4.png");
                     b.setIcon(icon);
                     gameBoardSquares[jj][ii] = b;
                 }
@@ -113,14 +115,14 @@ public class PlayerScreenOutput extends ViewerType
                 else if((gameBoard[jj][ii] instanceof Monster) &&
         		        ((gameBoard[jj][ii].getItemChar()).equals("M"))) 
                 {
-                	icon = new ImageIcon("src/monster.png");
+                	icon = new ImageIcon("src/images/monster.png");
                     b.setIcon(icon);
                     gameBoardSquares[jj][ii] = b;
                 }
                 else if((gameBoard[jj][ii] instanceof Wall) &&
         		        ((gameBoard[jj][ii].getItemChar()).equals("*"))) 
                 {
-                	icon = new ImageIcon("src/wall.png");
+                	icon = new ImageIcon("src/images/wall.png");
                     b.setIcon(icon);
                     gameBoardSquares[jj][ii] = b;
                 }
@@ -175,9 +177,7 @@ public class PlayerScreenOutput extends ViewerType
                 // ensures the minimum size is enforced.
                 f.setMinimumSize(f.getSize());
                 f.setVisible(true);
-                f.invalidate();
-                f.repaint();
-                f.revalidate();
+                
                 
             }
         };
