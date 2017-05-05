@@ -320,6 +320,13 @@ public class Board
 		        		            System.out.println("Danger Will Robinson! We are sunk. ");
 		        		            gamePlayers.remove(playerNumber);
 		        		            gameBoard[tempXA][tempYA] = new Floor("-");
+		        		            for (int p = 0; p < gamePlayers.size(); p++)
+		        		            {
+		        		            	if (gamePlayers.get(p).getItemChar().equals(itemChar))
+		        		            	{
+		        		            		gamePlayers.remove(p);
+		        		            	}
+		        		            }
 		        		           
 		        	           }
 		        	 

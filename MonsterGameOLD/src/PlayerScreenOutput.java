@@ -85,7 +85,7 @@ public class PlayerScreenOutput extends ViewerType
                 	icon = new ImageIcon("src/images/player1.png");
                     b.setIcon(icon);
                     gameBoardSquares[jj][ii] = b;
-                    System.out.println("inside button player 1");
+                    
                 }
                 
                 else if((gameBoard[jj][ii] instanceof Player) &&
@@ -177,6 +177,8 @@ public class PlayerScreenOutput extends ViewerType
                 // ensures the minimum size is enforced.
                 f.setMinimumSize(f.getSize());
                 f.setVisible(true);
+                f.invalidate();
+                f.repaint();
                 
                 
             }
