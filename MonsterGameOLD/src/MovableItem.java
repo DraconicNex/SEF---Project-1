@@ -20,7 +20,7 @@ public abstract class MovableItem extends Item {
 	
 	/*-----------------------------Using two dimensional----------------------------------*/
 	
-	public static int[] moveItem2(int XCoord, int YCoord, String direction
+	public static int[] findNewXAndY(int XCoord, int YCoord, String direction
 			           , int boardSize) throws outOfBoundsException
     {   //Changed now to return x and y coords after move. n
 		

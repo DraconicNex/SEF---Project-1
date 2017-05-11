@@ -17,18 +17,19 @@ public class ToTest2DArrayMove
 	private static ViewerType myViewerType,playerViewerType;
 	//private static ViewerType myViewerType;
 
-	//private  Item[][] gameBoard;
+	private  Item[][] gameBoard;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception 
 	
 	{
-		myViewerType = new ServerConsoleOutput();
-		playerViewerType = new PlayerScreenOutput();
+		
 	    
 		Board.initialiseGameBoard();
 	    Board.PlayerNumbers();		
 		Board.chooseStartPostion();
+		myViewerType = new ServerConsoleOutput();
+		playerViewerType = new PlayerScreenOutput();
 		
 		myViewerType.refreshBoard();
 		playerViewerType.refreshBoard();
@@ -50,14 +51,15 @@ public class ToTest2DArrayMove
 	public void testBoard()
 	{
 		// test 7 right
- 		Board.moveItem2(1,"Right");
- 		Board.moveItem2(1,"Right");
- 		Board.moveItem2(1,"Right");
- 		Board.moveItem2(1,"Right");
- 		Board.moveItem2(1,"Right");
- 		Board.moveItem2(1,"Right");
- 		Board.moveItem2(1,"Right");
+ 		Board.moveItem2("1","Right");
+ 		Board.moveItem2("1","Right");
+ 		Board.moveItem2("1","Right");
+ 		Board.moveItem2("1","Right");
+ 		Board.moveItem2("1","Right");
+ 		Board.moveItem2("1","Right");
+ 		Board.moveItem2("1","Right");
  		myViewerType.refreshBoard();
+ 		playerViewerType.refreshBoard();
  		System.out.println("After Move test one");
 	}
 		
@@ -65,7 +67,7 @@ public class ToTest2DArrayMove
 	public void testBoard2()
 	{
 		// then one more right a collision player no move
-		Board.moveItem2(1,"Right");
+		Board.moveItem2("1","Right");
 		myViewerType.refreshBoard();
  		
  		System.out.println("After Move Test 2");
@@ -75,7 +77,7 @@ public class ToTest2DArrayMove
 	public void testBoard3()
 	{
 		// then a collision wall no move
-        Board.moveItem2(1,"Down"); 
+        Board.moveItem2("1","Down"); 
         myViewerType.refreshBoard();
  		System.out.println("After Move Test 3");
 		
@@ -86,13 +88,13 @@ public class ToTest2DArrayMove
 	{
 		
 		// move out of bonds no move
-        Board.moveItem2(1,"Up"); 		
+        Board.moveItem2("1","Up"); 		
  		System.out.println("After Move Test 4");
  		myViewerType.refreshBoard();
  		// move test to run into monster
  		Item testMonster= new Monster("M");
  		Board.changeItemOnGameBoard(8, 0, testMonster );
- 		Board.moveItem2(1,"Right");
+ 		Board.moveItem2("1","Right");
  		myViewerType.refreshBoard();
  		
 		

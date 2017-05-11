@@ -53,8 +53,8 @@ public class TestToMoveOject
 		assertEquals(XCoord,0);
 		assertEquals(YCoord,0);
 		direction = "Down";
-		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
-		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
+		XCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[1];
 		assertEquals(XCoord,0);
 		assertEquals(YCoord,1);
 	}
@@ -68,8 +68,8 @@ public class TestToMoveOject
 		assertEquals(YCoord,0);
 		direction = "Up";
 		
-		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
-		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
+		XCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[1];
 		
 	}
 	@Test 
@@ -82,19 +82,19 @@ public class TestToMoveOject
 		assertEquals(XCoord,0);
 		assertEquals(YCoord,0);
 		direction = "Down";
-		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
-		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
+		XCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[1];
 		assertEquals(XCoord,0);
 		assertEquals(YCoord,1);
-		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
-		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
-		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
-		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
-		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
-		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
+		XCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[1];
+		XCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[1];
+		XCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[1];
 		direction ="Left";
-		XCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[0];
-		YCoord = MovableItem.moveItem2(XCoord, YCoord, direction, boardSize)[1];
+		XCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[0];
+		YCoord = MovableItem.findNewXAndY(XCoord, YCoord, direction, boardSize)[1];
 		assertEquals(XCoord,9);
 		assertEquals(YCoord,4);
 	}

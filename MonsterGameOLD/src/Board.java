@@ -17,10 +17,10 @@ public class Board
 	                      tempYB, playerNumber,
 	                      newXCoord, newYCoord;
 	public static String  direction;
-	private static Monster gameMonster;
-	private static int boardSize;
-	private static Item tempItem ,tempItemA, tempItemB, tempItemC;
-	private static Item[][] gameBoard ;//= new Item [boardSize][boardSize] ;
+	public static Monster gameMonster;
+	public static int boardSize;
+	public static Item tempItem ,tempItemA, tempItemB, tempItemC;
+	public static Item[][] gameBoard ;//= new Item [boardSize][boardSize] ;
 	
 
 	public Board() 
@@ -49,10 +49,7 @@ public class Board
 				{
 					System.out.print("A");
 					tempItem = new Floor("A");
-		            tempSquare =  new Square(j,i,tempItem);
-					gameSquares.add(tempSquare);
-					
-					gameBoard[j-1][i-1] = tempItem;
+		            gameBoard[j-1][i-1] = tempItem;
 					
 				}
 
@@ -60,8 +57,6 @@ public class Board
 				{
 					System.out.print("B");
 					tempItem = new Floor("B");
-		            tempSquare =  new Square(j,i,tempItem);
-					gameSquares.add(tempSquare);
 					gameBoard[j-1][i-1] = tempItem;
 					
 					
@@ -71,8 +66,6 @@ public class Board
 				{
 					System.out.print("C");
 					tempItem = new Floor("C");
-		            tempSquare =  new Square(j,i,tempItem);
-					gameSquares.add(tempSquare);
 					gameBoard[j-1][i-1] = tempItem;
 					
 					
@@ -92,8 +85,6 @@ public class Board
 					System.out.print("M");
 									
 					gameMonster = new Monster("M");
-					tempSquare =  new Square(j,i,gameMonster);
-					gameSquares.add(tempSquare);
 					gameBoard[j-1][i-1] = gameMonster;
 					
 					
@@ -104,9 +95,7 @@ public class Board
 					
 					
 					tempItem = new Floor("-");
-		            tempSquare =  new Square(j,i,tempItem);
-					gameSquares.add(tempSquare);
-					System.out.print("-");
+      				System.out.print("-");
 					gameBoard[j-1][i-1] = tempItem;
 					
 					
@@ -115,8 +104,6 @@ public class Board
 				else {
 		            System.out.print("*");
 		            tempItem = new Wall("*");
-		            tempSquare =  new Square(j,i,tempItem);
-					gameSquares.add(tempSquare);
 					gameBoard[j-1][i-1] = tempItem;
 		           
 		            
@@ -295,8 +282,8 @@ public class Board
 		         if (((gameBoard[tempXA][tempYA].getItemChar()).equals (itemChar)))
 		        	   {
 		    	         System .out.println(tempXA +" " +tempYA +" nested loop");
-		        	    newXCoord = MovableItem.moveItem2(tempXA,tempYA,direction,boardSize)[0];
-		        	    newYCoord = MovableItem.moveItem2(tempXA,tempYA,direction,boardSize)[1];
+		        	    newXCoord = MovableItem.findNewXAndY(tempXA,tempYA,direction,boardSize)[0];
+		        	    newYCoord = MovableItem.findNewXAndY(tempXA,tempYA,direction,boardSize)[1];
 		        	 
 		        	     System .out.println(tempXA +" " +tempYA+" " + newXCoord+" " +newYCoord);
 		        	 

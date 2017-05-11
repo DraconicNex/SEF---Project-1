@@ -78,11 +78,11 @@ public class Player extends MovableItem
            {
            case 'A':
         	   
-        	   tempSquare = gameSquares.get((1*boardSize)-1);
-			   System.out.println(tempSquare.getContents());
+
+			  
 			   playersTemp =  new Player(Integer.toString(playerNumber));
-			   tempSquare.changeContents(playersTemp);
-			   gameSquares.set(((1*boardSize)-1),tempSquare);
+			   
+			  
 			   gameBoard[0][0] = playersTemp;
 			   
 			  
@@ -92,11 +92,8 @@ public class Player extends MovableItem
            case 'B':
         	   
         	   
-        	   tempSquare = gameSquares.get((1*boardSize)-1);
-			   System.out.println(tempSquare.getContents());
+        	   
 			   playersTemp =  new Player(Integer.toString(playerNumber));
-			   tempSquare.changeContents(playersTemp);
-			   gameSquares.set(((1*boardSize)-1),tempSquare);
 			   gameBoard[boardSize-1][0] = playersTemp;
         	   
         	   break;
@@ -104,22 +101,16 @@ public class Player extends MovableItem
            case 'C':
         	   
         	   
-        	   tempSquare = gameSquares.get((boardSize - 1) * boardSize);
-			   System.out.println(tempSquare.getContents());
+        	   
 			   playersTemp =  new Player(Integer.toString(playerNumber));
-			   tempSquare.changeContents(playersTemp);
-			   gameSquares.set(((boardSize - 1) * boardSize),tempSquare);
 			   gameBoard[0][boardSize-1] = playersTemp;
+			   
         	   break;
           
            case 'D':
         	   
         	  
-        	   tempSquare = gameSquares.get((boardSize  * boardSize)-1);
-			   System.out.println(tempSquare.getContents());
-			   playersTemp =  new Player(Integer.toString(playerNumber));
-			   tempSquare.changeContents(playersTemp);
-			   gameSquares.set(((boardSize  * boardSize)-1),tempSquare);
+        	   playersTemp =  new Player(Integer.toString(playerNumber));
 			   gameBoard[boardSize-1][boardSize-1] = playersTemp;
 			   
         	   

@@ -61,7 +61,7 @@ public class PlayerScreenOutput extends ViewerType
         
         System.out.println("value in player out " + boardSize);
         int testRolColVar = 9;
-        playerGrid =  new GridLayout(testRolColVar,testRolColVar);
+        playerGrid =  new GridLayout(boardSize,boardSize);
         playerBoard = new JPanel(playerGrid);
         playerBoard.setBackground(Color.CYAN);
         playerBoard.setBorder(new LineBorder(Color.BLACK));

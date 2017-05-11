@@ -26,8 +26,7 @@ public class StartGame
 		
 		
 		int numOfPlayers = 0;
-		 myViewerType = new ServerConsoleOutput();
-		 playerViewerType = new PlayerScreenOutput();
+
 		
 		
 		
@@ -39,6 +38,8 @@ public class StartGame
 		 *  */
 	    
 		Board.initialiseGameBoard();
+		 myViewerType = new ServerConsoleOutput();
+		 playerViewerType = new PlayerScreenOutput();
 		
 		myViewerType.refreshBoard();
 		playerViewerType.refreshBoard();

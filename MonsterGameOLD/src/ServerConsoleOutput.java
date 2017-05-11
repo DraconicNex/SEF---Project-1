@@ -9,7 +9,7 @@ public class ServerConsoleOutput extends ViewerType
 		
 	}
 	
-	public   void refreshBoard()
+	public void refreshBoard()
 	{
 		
 		
