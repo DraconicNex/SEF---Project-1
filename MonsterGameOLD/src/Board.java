@@ -74,8 +74,6 @@ public class Board
 				{
 					System.out.print("D");
 					tempItem = new Floor("D");
-		            tempSquare =  new Square(j,i,tempItem);
-					gameSquares.add(tempSquare);
 					gameBoard[j-1][i-1] = tempItem;
 					
 					
@@ -294,7 +292,7 @@ public class Board
 		        		            
 		        	           }
 		        	      
-		        	       else if (gameBoard[newXCoord][newYCoord] instanceof Player)
+		        	       else if ((gameBoard[newXCoord][newYCoord] instanceof Player) && !(gameBoard[tempXA][tempYA] instanceof Monster))
 		        	    	   {
 		        		          
 		        		           System.out.println("Danger Will Robinson! Collision ");
