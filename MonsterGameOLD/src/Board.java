@@ -5,9 +5,9 @@ public class Board
 {
 	//testing testing 1,2!!
 	//bloody dual security 
-	public static ArrayList<Square> gameSquares = new ArrayList<Square>() ;
+	//public static ArrayList<Square> gameSquares = new ArrayList<Square>() ;
 	public static ArrayList<Player> gamePlayers = new ArrayList<Player>();
-	public static int posn[] = new int[2];
+	
 	public static ArrayList<int[]> playerCoordsForMonster = new ArrayList<int []>();
 	public static Square tempSquare,updatedTempSquare, tempSquareA,
 	                      tempSquareB;
@@ -18,7 +18,7 @@ public class Board
 	                      newXCoord, newYCoord;
 	public static String  direction;
 	public static Monster gameMonster;
-	public static int boardSize;
+	public static int boardSize,posnPlace;
 	public static Item tempItem ,tempItemA, tempItemB, tempItemC;
 	public static Item[][] gameBoard ;//= new Item [boardSize][boardSize] ;
 	
@@ -113,7 +113,7 @@ public class Board
 		}
 		
 		
-		System.out.println(gameSquares.size()+ " initialise");
+		
 		System.out.println();
 	}
 	
@@ -124,7 +124,7 @@ public class Board
 	public static void chooseStartPostion()
 	{
 		
-		Player.addInitialPlayerPosition(boardSize,gameSquares,gamePlayers,gameBoard);
+		Player.addInitialPlayerPosition(boardSize,gamePlayers,gameBoard);
 	}
 	
 	
@@ -169,12 +169,7 @@ public class Board
 		return gameMonster;
 	}
 	
-	
-	public static ArrayList<Square> gameSquares()
-	{
-		return gameSquares;
-	}
-	
+		
 	public static int getBoardSize()
 	{
 		return boardSize;
@@ -188,32 +183,48 @@ public class Board
 /*----------------Sets up array to hold player positions to pass to Monster
  *                to calculate movement direction------------------------------
  */
-	public static void calculatePlayerCoordsForMonster()
-	{
+	public static ArrayList<int[]> calculatePlayerCoordsForMonster()
+	{   
+		// calculate the player posn for Manhattan Distances
+		// first clear old array
+		
 		playerCoordsForMonster.clear();
-		for (int m = 0; m < gameBoard.length; m++)
+		posnPlace = 0;
+		for (int m = 0; m < boardSize; m++)
 		{
 			
-	      for (int n = 0; n < gameBoard[m].length; n++) 
+	      for (int n = 0; n < boardSize; n++) 
 	      {
-	    	  if (gameBoard[m][n] instanceof Player)
-	    			  {
-	    		  		posn[0] = n;
-	    		  		posn[1] = m;
-	    		  
-	    		       playerCoordsForMonster.add(posn);
-	    		       
-	    		      
-	    		        
-	    		  
-	    			  }
-	     
+	    	  if (gameBoard[n][m] instanceof Player)
+	    	  {
+	    		// Have to make new array inside loop otherwise only records last position
+	    		   int posn[] = new int[2];
+	    		   posn[0]= n;
+	    		   posn[1] = m;	    		  		
+	    		   playerCoordsForMonster.add(posnPlace,posn);
+	    		   posnPlace++;
+	    	}
+	      }
+		}
+		// calculate Monster posn and place at beginning of array list
 
+		for (int m = 0; m < boardSize; m++)
+		{
+			
+	      for (int n = 0; n < boardSize; n++) 
+	      {
+	    	  if (gameBoard[n][m] instanceof Monster)
+	    	  {
+	    		  // Have to make new array inside loop otherwise only records last position
+	    		  int posn[] = new int[2];
+		          posn[0]= n;
+		          posn[1] = m;	    		  		
+		    	  playerCoordsForMonster.add(0,posn);
+	    			  }
 	      }
 		}
 		
-		 Monster.moveMonsterDirection( playerCoordsForMonster );
-		//return playerCoordsForMonster;
+		return playerCoordsForMonster;
 	}
 	
 /*--------------------------Move Item ----------------------------------------*/
@@ -297,13 +308,34 @@ public class Board
 		        		          
 		        		           System.out.println("Danger Will Robinson! Collision ");
 		        		          
-		        	    	   }       		      
+		        	    	   }  
+		        	        
+		        	       else if ((gameBoard[newXCoord][newYCoord] instanceof Player) && (gameBoard[tempXA][tempYA] instanceof Monster))
+	        	    	   {
+		        	    	       System.out.println("Argh me hearties. We sunk the blighter.");
+	        		               
+	        		               for (int p = 0; p < gamePlayers.size(); p++)
+	        		               {
+	        		            	    if (gamePlayers.get(p).getItemChar().equals(gameBoard[newXCoord][newYCoord].getItemChar()))
+	        		            	  {
+	        		            		gamePlayers.remove(p);
+	        		            	  }
+	        		               }
+	        		               gameBoard[newXCoord][newYCoord] = new Floor("-");
+	        		               tempItemA = gameBoard[tempXA][tempYA];
+		        		           tempItemB= gameBoard[newXCoord][newYCoord];
+		        		           tempItemC = tempItemB;
+		        		           gameBoard[newXCoord][newYCoord] = tempItemA;
+		        		           gameBoard[tempXA][tempYA] = tempItemC;
+	        		           
+	        		          
+	        	    	   }
 		        	       		        	 
 		        	       else if (gameBoard[newXCoord][newYCoord] instanceof Monster)
 		        	           {
 		        	  	           
 		        		            System.out.println("Danger Will Robinson! We are sunk. ");
-		        		            gamePlayers.remove(playerNumber);
+		        		            
 		        		            gameBoard[tempXA][tempYA] = new Floor("-");
 		        		            for (int p = 0; p < gamePlayers.size(); p++)
 		        		            {
@@ -442,7 +474,10 @@ public class Board
 		
 	}	
 		
-		
+	public static ArrayList<Square> gameSquares()
+	{
+		return gameSquares;
+	}	
 */
 	
 	

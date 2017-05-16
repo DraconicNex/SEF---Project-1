@@ -8,7 +8,7 @@ public class Player extends MovableItem
 	public boolean eaten;
 	public String moveDirection;
 	private static final Scanner sc = new Scanner(System.in);
-	private static Square tempSquare;
+	
 	private static Player playersTemp,temp;
 	
 
@@ -38,7 +38,7 @@ public class Player extends MovableItem
 		return moveDirection;
 	}
 	
-	public static void addInitialPlayerPosition(int boardSize, ArrayList<Square> gameSquares,
+	public static void addInitialPlayerPosition(int boardSize,
 			                   ArrayList<Player> gamePlayers, Item[][] gameBoard)
 	{
 		
@@ -121,7 +121,7 @@ public class Player extends MovableItem
 		
 		
 	}while (playerNumber <= gamePlayers.size());
-		System.out.println(gameSquares.size() + " assigned");
+		
     }
 
 }

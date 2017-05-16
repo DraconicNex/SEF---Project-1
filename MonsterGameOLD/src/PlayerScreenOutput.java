@@ -165,7 +165,9 @@ public class PlayerScreenOutput extends ViewerType
                         new PlayerScreenOutput();
 
                  f = new JFrame("Multi Player Pirate Game");
-                
+                 gui.invalidate();
+                 gui.repaint();
+                                 
                 f.getContentPane().add(cb.getGui());
                 
                 f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -177,9 +179,7 @@ public class PlayerScreenOutput extends ViewerType
                 // ensures the minimum size is enforced.
                 f.setMinimumSize(f.getSize());
                 f.setVisible(true);
-                f.invalidate();
-                f.repaint();
-                
+               
                 
             }
         };

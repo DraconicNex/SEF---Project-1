@@ -25,7 +25,7 @@ public class StartGame
 		
 		
 		
-		int numOfPlayers = 0;
+		
 
 		
 		
@@ -49,6 +49,7 @@ public class StartGame
 		Board.chooseStartPostion();
 		myViewerType.refreshBoard();
 		playerViewerType.refreshBoard();
+		Monster.examineManhattanDistance(Board.calculatePlayerCoordsForMonster());
 		
 	    /*
 		Board.moveItem2(1,"Down");
@@ -73,25 +74,20 @@ public class StartGame
 	   
 		    Board.moveItem2("M","Up");
 		    Board.moveItem2("1","Right");
+		    Board.moveItem2("M","Up");
+		    Board.moveItem2("1","Right");
+		    Board.moveItem2("M","Up");
+		    Board.moveItem2("1","Right");
+		    myViewerType.refreshBoard();
+		    playerViewerType.refreshBoard();
+		    Board.moveItem2("M","Up");
+		    Board.moveItem2("1","Right");
+		   
+		   
 		    myViewerType.refreshBoard();
 		    playerViewerType.refreshBoard();
 		    Board.moveItem2("1","Right");
-		    Board.moveItem2("M","Up");
-		    myViewerType.refreshBoard();
-		    playerViewerType.refreshBoard();
-		    Board.moveItem2("1","Right");
-		    Board.moveItem2("M","Up");
-		    myViewerType.refreshBoard();
-		    playerViewerType.refreshBoard();
-		    Board.moveItem2("M","Up");
-		    myViewerType.refreshBoard();
-		    playerViewerType.refreshBoard();
-		    Board.moveItem2("1","Right");
-		    Board.moveItem2("M","Up");
-		    myViewerType.refreshBoard();
-		    playerViewerType.refreshBoard();
-		    Board.moveItem2("1","Right");
-		    Board.moveItem2("M","Up");
+		   
 		    myViewerType.refreshBoard();
 		    playerViewerType.refreshBoard();
 		    Board.moveItem2("M","Up");
@@ -100,6 +96,9 @@ public class StartGame
 		    Board.moveItem2("M","Up");
 	        myViewerType.refreshBoard();
 		    playerViewerType.refreshBoard();
+		    
+		    Monster.examineManhattanDistance(Board.calculatePlayerCoordsForMonster());
+		    
 	 		
 		
 
